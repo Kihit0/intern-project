@@ -2,7 +2,6 @@ const path = require('path');
 
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -135,32 +134,6 @@ module.exports = {
             },
           },
           'postcss-loader',
-        ],
-      },
-
-      {
-        test: /img\.svg$|\.(png|jpg|jpeg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              publicPath: '../',
-              name: `assets/image/[name].[ext]`,
-            },
-          },
-        ],
-      },
-
-      {
-        test: /font\.svg$|\.(ttf|woff|woff2|eot)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              publicPath: '../',
-              name: `assets/fonts/[name].[ext]`,
-            },
-          },
         ],
       },
 
