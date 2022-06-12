@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "target": "es5",
+    "baseUrl": ".",
+
+    "paths": {
+      "@ui/*": ["./src/ui/*"]
+    }
+  },
+
+  "include": ["src/**/*"],
+
+  "exclude": [
+    ".git",
+    "node_modules",
+    "build",
+    "**/.git/*",
+    "**/build/*",
+    "**/node_modules/*"
+  ]
+}

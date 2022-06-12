@@ -1,0 +1,23 @@
+.ui-title {
+  font-weight: 700;
+
+  &--s {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &--m {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &--l {
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  &--xl {
+    font-size: 18px;
+    line-height: 25px;
+  }
+}
