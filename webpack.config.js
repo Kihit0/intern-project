@@ -84,9 +84,6 @@ module.exports = {
 
   devServer: {
     port: 1337,
-    hot: true,
-    inline: true,
-    publicPath: '',
   },
 
   devtool: isDev ? 'source-map' : undefined,
