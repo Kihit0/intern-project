@@ -20,6 +20,10 @@ $klein->respond('GET', '/', function () use ($twig) {
     return $twig->load('main.twig')->render();
 });
 
+$klein->respond('GET', '/profile', function () use ($twig) {
+    return $twig->load('main.twig')->render();
+});
+
 $klein->respond('GET', '/news/[i:id]', function () use ($twig) {
     return $twig->load('main.twig')->render();
 });
