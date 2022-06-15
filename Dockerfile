@@ -1,8 +1,3 @@
-# FROM node:lts-alpine AS node_base
-
-# RUN echo "NODE Version:" && node --version
-# RUN echo "NPM Version:" && npm --version
-
 FROM trafex/php-nginx:latest
 
 # Install composer from the official image
