@@ -1,12 +1,11 @@
 /**
  * nodejs утилита для работы c путями до файлов.
  */
-import path from 'path';
+const path = require('path');
 
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
 
 const isDev = process.env.NODE_ENV === 'development';
-const isProd = !isDev;
 
 /**
  * Мапа путей в проекте.
@@ -22,11 +21,11 @@ const PATHS = {
   src: path.resolve(__dirname, 'src'),
 };
 
-export default {
+module.exports = {
   /**
    * Режим, в котором webpack будет собирать наш проект.
    */
-  mode: isDev ? 'development' : 'production',
+  mode: isDev ? "development" : "production",
 
   /**
    * Входные пути, относительно которых, webpack будет собирать
@@ -51,7 +50,7 @@ export default {
      * import './src/index.jsx';
      * ```
      */
-    main: ['@babel/polyfill', './src/index.jsx'],
+    main: ["@babel/polyfill", "./src/index.jsx"],
   },
 
   /**
@@ -78,7 +77,7 @@ export default {
      * на хостинг, какие-то файлы загрузились заново, ведь браузер не сможет
      * их найти в кеше.
      */
-    filename: `js/${isDev ? '[name].js' : '[name].[hash].js'}`,
+    filename: `js/${isDev ? "[name].js" : "[name].[hash].js"}`,
   },
 
   /**
@@ -100,7 +99,7 @@ export default {
      * - `./utils/MyUtil.jsx`, затем
      * - `./utils/MyUtil.json`
      */
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: [".js", ".jsx", ".json"],
   },
 
   /**
@@ -168,7 +167,7 @@ export default {
              *
              * Название - указание на название модуля в `node_modules`.
              */
-            loader: 'babel-loader',
+            loader: "babel-loader",
             /**
              * Объект с настройками лоадера.
              *
@@ -185,7 +184,7 @@ export default {
                *
                * (смотреть в левом меню)
                */
-              presets: ['@babel/preset-env'],
+              presets: ["@babel/preset-env"],
             },
           },
         ],
@@ -196,7 +195,7 @@ export default {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             /**
              * То же самое правило, но для React.
              *
@@ -209,7 +208,7 @@ export default {
              * задействован тот лоадер, что находится в конце.
              */
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
+              presets: ["@babel/preset-env", "@babel/preset-react"],
             },
           },
         ],

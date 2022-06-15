@@ -2,10 +2,25 @@
   "name": "front-study",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development",
+    "build": "NODE_ENV=production webpack"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "amoCRM",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.2"
+  }
 }
