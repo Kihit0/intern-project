@@ -50,7 +50,7 @@ module.exports = {
      * import './src/index.jsx';
      * ```
      */
-    main: ["@babel/polyfill", "./src/index.jsx"],
+    main: ["@babel/polyfill", "./src/index.jsx"]
   },
 
   /**
@@ -98,7 +98,7 @@ module.exports = {
      * - `./utils/MyUtil.jsx`, затем
      * - `./utils/MyUtil.json`
      */
-    extensions: [".js", ".jsx", ".json"],
+    extensions: [".js", ".jsx", ".json"]
   },
 
   /**
@@ -109,7 +109,7 @@ module.exports = {
     /**
      * Порт, на котором будет запущен дев-сервер.
      */
-    port: 1337,
+    port: 1337
   },
 
   /**
@@ -121,7 +121,7 @@ module.exports = {
      * Плагин, который будет чистить папку `dist` каждый раз, когда будет
      * запускаться production сборка.
      */
-    new CleanWebpackPlugin(),
+    ...(isDev ? [] : [new CleanWebpackPlugin()])
   ],
 
   /**
@@ -183,10 +183,10 @@ module.exports = {
                *
                * (смотреть в левом меню)
                */
-              presets: ["@babel/preset-env"],
-            },
-          },
-        ],
+              presets: ["@babel/preset-env"]
+            }
+          }
+        ]
       },
 
       {
@@ -207,11 +207,11 @@ module.exports = {
              * задействован тот лоадер, что находится в конце.
              */
             options: {
-              presets: ["@babel/preset-env", "@babel/preset-react"],
-            },
-          },
-        ],
-      },
-    ],
-  },
+              presets: ["@babel/preset-env", "@babel/preset-react"]
+            }
+          }
+        ]
+      }
+    ]
+  }
 };
