@@ -20,7 +20,15 @@ $klein->respond('GET', '/', function () use ($twig) {
     return $twig->load('main.twig')->render();
 });
 
-$klein->respond('GET', '/news/[i:id]?', function ($request, $response, $service) {
+$klein->respond('GET', '/news/[i:id]', function () use ($twig) {
+    return $twig->load('main.twig')->render();
+});
+
+$klein->respond('GET', '/promotions/[i:id]', function () use ($twig) {
+    return $twig->load('main.twig')->render();
+});
+
+$klein->respond('GET', '/api/news/[i:id]?', function ($request, $response, $service) {
     $send = $request->param('format', 'json');
 
     $json = file_get_contents(__DIR__.'/news.json');
@@ -39,7 +47,7 @@ $klein->respond('GET', '/news/[i:id]?', function ($request, $response, $service)
     return $response->$send($data);
 });
 
-$klein->respond('GET', '/promotions/[i:id]?', function ($request, $response, $service) {
+$klein->respond('GET', '/api/promotions/[i:id]?', function ($request, $response, $service) {
     $send = $request->param('format', 'json');
 
     $json = file_get_contents(__DIR__.'/promotions.json');
@@ -56,14 +64,6 @@ $klein->respond('GET', '/promotions/[i:id]?', function ($request, $response, $se
     }
 
     return $response->$send($data);
-});
-
-$klein->respond('GET', '/news', function ($request, $response, $service) {
-    $json = file_get_contents(__DIR__.'/news.json');
-    $data = json_decode($json, TRUE);
-
-    $send = $request->param('format', 'json');
-    $response->$send($data);
 });
 
 $klein->dispatch();
