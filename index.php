@@ -12,6 +12,12 @@ $twig = new \Twig\Environment($loader, [
 	'debug' => TRUE,
 ]);
 
+$filter_manifest = new \Twig\TwigFilter('manifest', function ($path) {
+    $manifest = json_decode(file_get_contents(__DIR__.'/dist/manifest.json'), TRUE);
+	return $manifest[$path];
+});
+
+$twig->addFilter($filter_manifest);
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
 $klein = new \Klein\Klein();
