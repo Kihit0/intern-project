@@ -1,0 +1,58 @@
+.user {
+  position: relative;
+
+  height: 40px;
+}
+
+.user__wrapper {
+  display: flex;
+}
+
+.user__name {
+  display: flex;
+  align-items: center;
+
+  margin-right: 10px;
+}
+
+.user__name > p {
+  overflow: hidden;
+
+  width: 90px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  cursor: pointer;
+}
+
+.user__img {
+  overflow: hidden;
+
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.user__img > img {
+  width: inherit;
+  height: inherit;
+}
+
+@media screen and (min-width: 768px) {
+  .user::after {
+    position: absolute;
+    left: -20px;
+    top: -10px;
+    bottom: 0;
+
+    height: var(--header-height);
+    width: 1px;
+
+    content: "";
+    background-color: var(--color-athens-gray);
+  }
+}

@@ -1,0 +1,21 @@
+.search{
+  display: flex;
+
+  padding: 10px 0;
+}
+
+.search__icon{
+  margin-right: 10px;
+}
+
+.search__input{
+  width: 100%;
+
+  border: none;
+}
+
+.search__input:focus{
+  outline: none;
+
+  border-bottom: var(--border-solid-small) var(--color-athens-gray);
+}

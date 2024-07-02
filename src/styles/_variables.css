@@ -1,9 +1,16 @@
 :root {
   /* Размер текста*/
-  --font-size-title: 30px;
+  --font-size-title-mobile: 30px;
+  --font-size-title-desktop: 36px;
   --font-size-subtitle: 18px;
   --font-size-text-base: 15px;
   --font-size-text-small: 13px;
+
+  /* Height */
+  --header-height-mobile: 105px;
+  --header-height: 66px;
+
+  --padding-20: 20px;
 
   /* Цвета */
   --color-white: #ffffff;
@@ -30,5 +37,4 @@
   --tablet-breakpoint-min: 768px;
   --tablet-breakpoint-max: 1279px;
   --desktop-breakpoint-min: 1280px;
-  --desktop-breakpoint-max: 1440px;
 }
