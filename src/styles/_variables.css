@@ -1,5 +1,4 @@
-:root{
-
+:root {
   /* Размер текста*/
   --font-size-title: 30px;
   --font-size-subtitle: 18px;
@@ -9,13 +8,12 @@
   /* Цвета */
   --color-white: #ffffff;
   --color-wild-sand: #f5f5f5;
-  --color-regent-gray: #8591A5;
-  --color-athens-gray: #E5E6E9;
-  --color-outer-space: #2E3640;
-  --color-firefly: #10242D;
+  --color-athens-gray: #e5e6e9;
+  --color-regent-gray: #8591a5;
+  --color-outer-space: #2e3640;
+  --color-firefly: #10242d;
   --color-black: #000000;
-
-  --color-cornflower-blue: #4C8BF7;
+  --color-cornflower-blue: #4c8bf7;
 
   /* Радиусы*/
   --border-radius-small: 3px;
@@ -27,7 +25,10 @@
   --box-shadow: 0 2px 6px rgba(from var(--color-black) r g b / 0.03);
 
   /* Брекпоинты media*/
-  --mobile-breakpoint: 375px;
-  --tablet-breakpoint: 768px;
-  --desktop-breakpoint: 1280px;
+  --mobile-breakpoint-min: 375px;
+  --mobile-breakpoint-max: 767px;
+  --tablet-breakpoint-min: 768px;
+  --tablet-breakpoint-max: 1279px;
+  --desktop-breakpoint-min: 1280px;
+  --desktop-breakpoint-max: 1440px;
 }

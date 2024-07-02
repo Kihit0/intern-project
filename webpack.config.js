@@ -1,12 +1,12 @@
 /**
  * nodejs утилита для работы c путями до файлов.
  */
-const path = require('path');
+const path = require("path");
 
-const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin;
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const isDev = process.env.NODE_ENV === 'development';
+const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const isDev = process.env.NODE_ENV === "development";
 
 /**
  * Мапа путей в проекте.
@@ -15,18 +15,18 @@ const PATHS = {
   /**
    * Директория в которую будет складироваться собранные файлы.
    */
-  dist: path.resolve(__dirname, 'dist'),
+  dist: path.resolve(__dirname, "dist"),
   /**
    * Наша рабочая директория.
    */
-  src: path.resolve(__dirname, 'src'),
+  src: path.resolve(__dirname, "src"),
 };
 
 module.exports = {
   /**
    * Режим, в котором webpack будет собирать наш проект.
    */
-  mode: isDev ? 'development' : 'production',
+  mode: isDev ? "development" : "production",
 
   /**
    * Входные пути, относительно которых, webpack будет собирать
@@ -51,7 +51,7 @@ module.exports = {
      * import './src/index.jsx';
      * ```
      */
-    main: ['@babel/polyfill', './src/index.jsx'],
+    main: ["@babel/polyfill", "./src/index.jsx"],
   },
 
   /**
@@ -63,7 +63,7 @@ module.exports = {
      * отдельного порта, то переконфигурируем publicPath,
      * чтобы в production-режиме manifest готовил корректные ссылки
      **/
-    publicPath: isDev ? 'http://localhost:1337/' : 'http://localhost/dist/',
+    publicPath: isDev ? "http://localhost:1337/" : "http://localhost/dist/",
     /**
      * Путь до директории, куда надо класть наши файлы.
      */
@@ -83,7 +83,7 @@ module.exports = {
      * на хостинг, какие-то файлы загрузились заново, ведь браузер не сможет
      * их найти в кеше.
      */
-    filename: `${isDev ? '[name].js' : '[name].[hash].js'}`,
+    filename: `${isDev ? "[name].js" : "[name].[hash].js"}`,
   },
 
   /**
@@ -105,7 +105,7 @@ module.exports = {
      * - `./utils/MyUtil.jsx`, затем
      * - `./utils/MyUtil.json`
      */
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: [".js", ".jsx", ".json"],
   },
 
   /**
@@ -118,10 +118,10 @@ module.exports = {
      */
     port: 1337,
     headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers':
-        'X-Requested-With, content-type, Authorization',
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers":
+        "X-Requested-With, content-type, Authorization",
     },
   },
 
@@ -172,12 +172,12 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               sourceMap: true,
             },
           },
-          'postcss-loader',
+          "postcss-loader",
         ],
       },
       {
@@ -185,15 +185,15 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               sourceMap: true,
               modules: {
-                localIdentName: '[name]__[local]___[hash:base64:5]', // настройки для CSS модулей
+                localIdentName: "[name]__[local]___[hash:base64:5]", // настройки для CSS модулей
               },
             },
           },
-          'postcss-loader',
+          "postcss-loader",
         ],
       },
       {
@@ -217,7 +217,7 @@ module.exports = {
              *
              * Название - указание на название модуля в `node_modules`.
              */
-            loader: 'babel-loader',
+            loader: "babel-loader",
             /**
              * Объект с настройками лоадера.
              *
@@ -234,7 +234,7 @@ module.exports = {
                *
                * (смотреть в левом меню)
                */
-              presets: ['@babel/preset-env'],
+              presets: ["@babel/preset-env"],
             },
           },
         ],
@@ -245,7 +245,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             /**
              * То же самое правило, но для React.
              *
@@ -258,7 +258,7 @@ module.exports = {
              * задействован тот лоадер, что находится в конце.
              */
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
+              presets: ["@babel/preset-env", "@babel/preset-react"],
             },
           },
         ],
@@ -266,4 +266,3 @@ module.exports = {
     ],
   },
 };
-

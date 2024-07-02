@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
 
-  <link href="{{ 'main.css'|manifest }}" rel="stylesheet">  
-</head>
-<body>
-  <div class="app">App</div>
-  <script src="{{ 'main.js'|manifest}}"></script>
-</body>
+		<link href="{{ 'main.css'|manifest }}" rel="stylesheet">
+	</head>
+	<body>
+		<div class="app container">
+			<div class="app__wrapper">
+				<div class="app__header">
+					{% include "blocks/_header.twig" %}
+				</div>
+				<div class="app__content">
+					{% include "blocks/_content.twig" %}
+				</div>
+				<div class="app__footer">
+					{% include "blocks/_footer.twig" %}
+				</div>
+			</div>
+		</div>
+		<script src="{{ 'main.js'|manifest}}"></script>
+	</body>
 </html>
