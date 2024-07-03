@@ -7,6 +7,8 @@
 @import url("./blocks/_content.css");
 @import url("./blocks/_user.css");
 @import url("./blocks/_search.css");
+@import url("./blocks/_icon.css");
+@import url("./blocks/_footer.css");
 
 *,
 *::before,
@@ -24,6 +26,14 @@
 
   margin: 0 auto;
   padding: 0 20px;
+}
+
+
+@media screen and (min-width: 1280px) {
+  .container{
+    width: 1440px; 
+    padding: 0; 
+  }
 }
 
 .app {

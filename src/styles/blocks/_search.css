@@ -5,7 +5,9 @@
 }
 
 .search__icon{
-  margin-right: 10px;
+  margin-right: 5px;
+  
+  cursor: pointer;  
 }
 
 .search__input{
