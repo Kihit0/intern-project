@@ -1,7 +1,7 @@
 .header {
   position: fixed;
 
-  height: var(--header-height-mobile);
+  height: calc(var(--header-height-mobile) - 2px);
   width: 100vw;
 
   background-color: var(--color-white);
@@ -33,7 +33,7 @@
 .header__logo::after {
   position: absolute;
   left: -20px;
-  bottom: 0;
+  bottom: 2px;
 
   width: 100vw;
   height: 1px;
@@ -89,7 +89,17 @@
   }
 
   .header__search {
-    margin-top: 2px;
-    margin-left: 11px;
+    margin-top: -1px;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (min-width: 1240px){
+  .header__logo::after {
+    left: calc(100% - 34px);
+  }
+
+  .header__search{
+    margin-left: -14px;
   }
 }

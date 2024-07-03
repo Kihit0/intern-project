@@ -52,11 +52,11 @@
 }
 
 .footer__police::before {
-  top: -3px;
+  top: -2px;
 }
 
 .footer__police::after {
-  bottom: -1px;
+  bottom: 1px;
 }
 
 .footer__police__list {
@@ -77,8 +77,12 @@
   margin-bottom: 22px;
 }
 
+.footer__police__list__item:nth-child(2){
+  margin-bottom: 21px;
+}
+
 .footer__police__list__item:last-child {
-  margin-bottom: 0;
+  margin-bottom: 2px;
 }
 
 .footer__police__list__item:hover{
@@ -130,6 +134,16 @@
 
   .footer__police__list__item:first-child{
     margin-bottom: 0;
+    padding-left: 1.5px;
+  }
+
+  .footer__police__list__item:nth-child(2) {
+    margin-bottom: 0;
+    padding-left: 0.5px;
+  }
+
+  .footer__police__list__item:last-child{
+    padding-left: 1px;
   }
 
   .footer__logo{
@@ -142,6 +156,25 @@
     margin-right: 45px;
   }
 
+  .footer__police__list__item:first-child{
+    padding-left: 0;
+    margin-left: -1px;
+    margin-top: 1px;
+  }
+
+  .footer__police__list__item:last-child{
+    padding-left: 0;
+    margin-left: 1px;
+    margin-top: 3 px;
+  }
+
+  .footer__police__list__item:nth-child(2) {
+    margin-bottom: 0;
+    padding-left: 0;
+    margin-top: 1px;
+    margin-left: 1px;
+  }
+
   .footer__police::before{
     top: -12px;
     left: -42px;
@@ -149,5 +182,9 @@
     display: block;
     width: 1px;
     height: 40px;
+  }
+
+  .footer__logo{
+    padding-top: 3px;
   }
 }

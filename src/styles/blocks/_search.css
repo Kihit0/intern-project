@@ -5,13 +5,15 @@
 }
 
 .search__icon{
-  margin-right: 5px;
+  margin-right: 6px;
   
   cursor: pointer;  
 }
 
 .search__input{
   width: 100%;
+
+  margin-top: -5px;
 
   border: none;
 }
@@ -20,4 +22,11 @@
   outline: none;
 
   border-bottom: var(--border-solid-small) var(--color-athens-gray);
+}
+
+
+@media screen and (min-width: 768px) {
+  .search__input{
+    margin-top: -2px;
+  }
 }
