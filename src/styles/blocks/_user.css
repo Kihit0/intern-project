@@ -36,8 +36,11 @@
   height: 40px;
   vertical-align: middle;
 
+  margin: -2px 0 0 0;
+
   border-radius: 50%;
   cursor: pointer;
+  background-color: var(--color-periwinkle-gray)  
 }
 
 .user__img > img {
@@ -46,31 +49,16 @@
 }
 
 @media screen and (min-width: 768px) {
-
-  .user__name{
+  .user__name {
     margin-right: -2px;
   }
 
   .user__name > p {
-    padding-top: 2px;
-    padding-left: 1px;
-  }
-
-  .user::after {
-    position: absolute;
-    left: -21px;
-    top: -10px;
-    bottom: 0;
-
-    height: var(--header-height);
-    width: 1px;
-
-    content: "";
-    background-color: var(--color-athens-gray);
+    padding: 2px 0 0 1px;
   }
 }
 
-@media screen  and (min-width: 1240px){
+@media screen and (min-width: 1240px) {
   .user__name > p {
     padding-top: 0px;
   }

@@ -4,7 +4,6 @@
 @import url("./_generic.css");
 
 @import url("./blocks/_header.css");
-@import url("./blocks/_content.css");
 @import url("./blocks/_user.css");
 @import url("./blocks/_search.css");
 @import url("./blocks/_icon.css");
@@ -15,12 +14,11 @@
 *::after {
   margin: 0;
   padding: 0;
-  
+
   box-sizing: border-box;
 }
 
-
-.container{
+.container {
   max-width: 1240px;
   width: 100%;
 
@@ -28,11 +26,10 @@
   padding: 0 20px;
 }
 
-
 @media screen and (min-width: 1280px) {
-  .container{
-    width: 1440px; 
-    padding: 0; 
+  .container {
+    width: 1440px;
+    padding: 0;
   }
 }
 
@@ -40,17 +37,18 @@
   height: 100%;
 }
 
-.app__wrapper{
+.app__wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-
-.app__content{
+.app__content {
   flex: 1 0 auto;
+
+  padding-top: var(--header-height-mobile);
 }
 
-.app__footer{
+.app__footer {
   flex: 0 0 auto;
 }

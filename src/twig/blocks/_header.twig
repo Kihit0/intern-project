@@ -1,10 +1,10 @@
 {% block header %}
 	<header class="header">
 		<div class="header__wrapper container">
-			<div class="header__right">
+			<div class="header__center">
 				<div class="header__logo">
 					<a href="#">
-						{% include "blocks/_logo.twig" %}
+						{% include "blocks/_logo.twig" with {'color': 'var(--color-silver-sand)'} %}
 					</a>
 				</div>
 				<div class="header__search">

@@ -2,26 +2,27 @@
   /* Размер текста*/
   --font-size-title-mobile: 30px;
   --font-size-title-desktop: 36px;
-  --font-size-subtitle: 18px;
+  --font-size-subtitle: 24px;
+  --font-size-title-small: 18px;
   --font-size-text-base: 15px;
   --font-size-text-small: 13px;
 
   /* Height */
   --header-height-mobile: 105px;
-  --header-height: 66px;
-
-  --padding-20: 20px;
+  --header-height-desktop: 66px;
 
   /* Цвета */
   --color-white: #ffffff;
   --color-wild-sand: #f5f5f5;
   --color-athens-gray: #e5e6e9;
-  --color-silver-sand: #C6C7C9;
+  --color-silver-sand: #c6c7c9;
+  --color-periwinkle-gray: #c8daea;
   --color-regent-gray: #8591a5;
   --color-outer-space: #2e3640;
   --color-firefly: #10242d;
   --color-black: #000000;
   --color-cornflower-blue: #4c8bf7;
+  --color-sail: #a1d5f6;
 
   /* Радиусы*/
   --border-radius-small: 3px;
@@ -33,9 +34,9 @@
   --box-shadow: 0 2px 6px rgba(from var(--color-black) r g b / 0.03);
 
   /* Брекпоинты media*/
-  --mobile-breakpoint-min: 375px;
-  --mobile-breakpoint-max: 767px;
-  --tablet-breakpoint-min: 768px;
-  --tablet-breakpoint-max: 1279px;
-  --desktop-breakpoint-min: 1280px;
+  --breakpoint-mobile-min: 375px;
+  --breakpoint-mobile-max: 767px;
+  --breakpoint-tablet-min: 768px;
+  --breakpoint-tablet-max: 1279px;
+  --breakpoint-desktop-min: 1280px;
 }
