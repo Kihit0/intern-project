@@ -44,14 +44,14 @@
   width: calc(100vw - 40px);
 }
 
-.header__search::after{
+.header__search::after {
   position: absolute;
-  top: 0;
+  top: -1px;
   left: -20px;
 
   width: 100vw;
   height: 1px;
-  
+
   content: "";
   background-color: var(--color-athens-gray);
 }
@@ -83,10 +83,10 @@
 
   .header__search {
     margin: -2px 0 0 18px;
-    padding-right: 15px;  
+    padding-right: 15px;
   }
 
-  .header__search::after{
+  .header__search::after {
     display: none;
   }
 }

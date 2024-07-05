@@ -8,19 +8,13 @@
 		<link href="{{ 'main.css'|manifest }}" rel="stylesheet">
 	</head>
 	<body>
-		<div class="app ">
-			<div class="app__wrapper">
-				<div class="app__header">
-					{% include "blocks/_header.twig" %}
-				</div>
-				<div class="app__content container">
-					<div id="react-app"></div>
-				</div>
-				<div class="app__footer">
-					{% include "blocks/_footer.twig" %}
-				</div>
-			</div>
-		</div>
+		{% include "blocks/_header.twig" %}
+		<main class="content container">
+			<div id="react-app"></div>
+		</main>
+
+		{% include "blocks/_footer.twig" %}
+
 		<script src="{{ 'main.js'|manifest}}"></script>
 	</body>
 </html>

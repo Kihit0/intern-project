@@ -1,22 +1,9 @@
-{% set youtubeIcon = "src/assets/images/icons/youtube.svg" %}
-{% set instagramIcon = "src/assets/images/icons/instagram.svg" %}
-{% set icons = [
-	{urlImg: youtubeIcon, alt: "youtube"}, 
-	{urlImg: instagramIcon, alt: "instagram"}] 
-%}
-
 {% block footer %}
 	<footer class="footer">
 		<div class="footer__wrapper container">
 			<div class="footer__socials">
 				<div class="footer__socials_icons">
-					{% for icon in icons %}
-						<div class="footer__socials_icons_icon">
-							<a href="#" target="_blank">
-								<img src="{{icon.urlImg}}" alt="{{icon.alt}}" />
-							</a>
-						</div>
-					{% endfor %}			
+					{% include "blocks/_socials.twig" %}
 				</div>
 			</div>
 			<div class="footer__policies">
@@ -28,7 +15,7 @@
 			</div>
 			<div class="footer__logo">
 				<a href="#">
-					{% include "blocks/_logo.twig" with {'color': 'var(--color-white)'} %}
+					{% include "blocks/_logo.twig" with {"is_dark" : false}%}
 				</a>
 			</div>
 		</div>

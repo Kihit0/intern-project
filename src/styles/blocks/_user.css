@@ -15,7 +15,7 @@
   margin-left: -2px;
 }
 
-.user__name > p {
+.user__name_p {
   overflow: hidden;
 
   width: 90px;
@@ -40,10 +40,10 @@
 
   border-radius: 50%;
   cursor: pointer;
-  background-color: var(--color-periwinkle-gray)  
+  background-color: var(--color-periwinkle-gray);
 }
 
-.user__img > img {
+.user__img_ava {
   width: inherit;
   height: inherit;
 }
@@ -53,13 +53,13 @@
     margin-right: -2px;
   }
 
-  .user__name > p {
+  .user__name_p {
     padding: 2px 0 0 1px;
   }
 }
 
 @media screen and (min-width: 1240px) {
-  .user__name > p {
+  .user__name_p {
     padding-top: 0px;
   }
 }

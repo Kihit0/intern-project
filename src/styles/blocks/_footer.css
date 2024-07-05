@@ -1,5 +1,7 @@
 .footer {
-  padding: 20px 0 15px;
+  flex: 0 0 auto;
+
+  padding: 18px 0 15px;
 
   color: var(--color-white);
 
@@ -22,21 +24,6 @@
   width: 100%;
 }
 
-.footer__socials_icons_icon {
-  width: 40px;
-  height: 40px;
-
-  transition: opacity 0.2s ease-in-out;
-}
-
-.footer__socials_icons_icon:hover {
-  opacity: 0.7;
-}
-
-.footer__socials_icons_icon:not(:last-child) {
-  margin-right: 20px;
-}
-
 .footer__policies {
   position: relative;
 
@@ -44,11 +31,10 @@
   flex-direction: column;
   width: 100%;
 
-  padding: 20px 0 0 0;
+  padding-top: 18px;
 
+  border: solid var(--color-black);
   border-width: 1px 0;
-  border-style: solid;
-  border-color: var(--color-black);
 }
 
 .footer__policies_list {
@@ -62,7 +48,7 @@
 }
 
 .footer__policies_list_item {
-  margin-bottom: 20px;
+  margin-bottom: 21px;
 
   transition: opacity 0.2s ease-in-out;
 }
@@ -103,7 +89,7 @@
 
   .footer__policies {
     padding: 0;
-    margin-left: 37px;
+    margin: -2px 0 0 37px;
 
     border: none;
   }
@@ -139,7 +125,7 @@
   }
 
   .footer__policies {
-    margin: 5px 0 0 41px;
+    margin: 1px 0 0 41px;
   }
 
   .footer__policies_list_item:first-child {

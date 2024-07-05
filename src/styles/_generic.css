@@ -1,5 +1,5 @@
 html {
-  font-family: "PT Sans";
+  font-family: "PT Sans", sans-serif;
   font-weight: 400;
   font-size: var(--font-size-text-base);
   color: var(--color-outer-space);
@@ -11,6 +11,10 @@ body {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   font-size: var(--font-size-text-base);
 
   background-color: var(--color-wild-sand);

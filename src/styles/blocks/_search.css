@@ -5,20 +5,26 @@
 }
 
 .search__btn {
+  display: block;
   width: 16px;
   height: 15px;
 
-  margin: 2px 6px 0 1px;
+  margin: 2px 6px 0 0;
 
   cursor: pointer;
   background-color: inherit;
   border: none;
 }
 
+.search__btn_icon {
+  width: inherit;
+  height: inherit;
+}
+
 .search__input {
   width: 100%;
 
-  margin: 3px 0 0 0;
+  margin-top: 3px ;
 
   border: none;
 }
@@ -27,26 +33,28 @@
   outline: none;
 }
 
-.search__input::placeholder {
+.search__input::placeholder,
+.search__input::-moz-placeholder {
   color: var(--color-regent-gray);
+  opacity: 1;
 }
 
 @media screen and (min-width: 768px) {
   .search__btn {
-    margin-top: 5px;
+    margin: 4px 5px 0 1px;
   }
 
   .search__input {
-    margin: 4px 0 0 1px;
+    margin-left: 1px;
   }
 }
 
 @media screen and (min-width: 1240px) {
   .search__btn {
-    margin: 1px 7px 0 -1px;
+    margin: -1px 7px 0 -1px;
   }
 
   .search__input {
-    margin: 3px 0 0 -1px;
+    margin: 0 0 0 -1px;
   }
 }
