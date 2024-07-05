@@ -1,0 +1,8 @@
+.logo {
+  width: 155px;
+}
+
+.logo__icon {
+  width: inherit;
+  height: inherit;
+}

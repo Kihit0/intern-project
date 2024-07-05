@@ -1,0 +1,147 @@
+.footer {
+  flex: 0 0 auto;
+
+  padding: 20px 0 16px;
+
+  color: var(--color-white);
+
+  background-color: var(--color-firefly);
+}
+
+.footer__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__socials {
+  padding-bottom: 19px;
+}
+
+.footer__socials_icons {
+  display: flex;
+  width: 100%;
+}
+
+.footer__policies {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  padding-top: 19px;
+
+  border: solid var(--color-black);
+  border-width: 1px 0;
+}
+
+.footer__policies_list {
+  width: 100%;
+
+  padding: 4px 0 2px;
+
+  text-align: center;
+
+  list-style: none;
+}
+
+.footer__policies_list_item {
+  margin-bottom: 20px;
+
+  transition: opacity 0.2s ease-in-out;
+}
+
+.footer__policies_list_item:first-child {
+  margin-bottom: 22px;
+}
+
+.footer__policies_list_item:last-child {
+  margin-bottom: 17px;
+}
+
+.footer__policies_list_item:hover {
+  opacity: 0.7;
+}
+
+.footer__logo {
+  padding-top: 20px;
+
+  color: var(--color-white);
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    display: flex;
+    align-items: center;
+    min-height: 100px;
+  }
+
+  .footer__wrapper {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .footer__socials {
+    padding-bottom: 6px;
+  }
+
+  .footer__socials_icons {
+    padding-top: 1px;
+  }
+
+  .footer__policies {
+    padding: 0;
+    margin: -2px 0 0 37px;
+
+    border: none;
+  }
+
+  .footer__policies_list {
+    display: flex;
+    align-items: center;
+
+    padding-top: 2px;
+  }
+
+  .footer__policies_list_item {
+    margin: 0 31px 0 0;
+  }
+
+  .footer__policies_list_item:first-child,
+  .footer__policies_list_item:last-child {
+    margin-bottom: 0;
+  }
+
+  .footer__logo {
+    padding-top: 0;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  .footer {
+    padding-top: 15px;
+  }
+  .footer__socials {
+    padding: 0 40px 0 0;
+
+    border-right: var(--border-solid-small) var(--color-black);
+  }
+
+  .footer__policies {
+    margin: 1px 0 0 41px;
+  }
+
+  .footer__policies_list_item:first-child {
+    margin-left: -1px;
+  }
+
+  .footer__policies_list_item:not(:first-child) {
+    margin-right: 31px;
+  }
+
+  .footer__logo {
+    padding-top: 5px;
+  }
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmoCRM - блог</title>
+
+    <link href="{{ 'main.css'|manifest }}" rel="stylesheet">
+  </head>
+  <body>
+    {% include "blocks/_header.twig" %}
+    <main class="content container">
+      <div id="react-app"></div>
+    </main>
+
+    {% include "blocks/_footer.twig" %}
+
+    <script src="{{ 'main.js'|manifest}}"></script>
+  </body>
+</html>
