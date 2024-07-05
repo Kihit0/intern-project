@@ -53,11 +53,11 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.footer__policies_list_item:first-child{
+.footer__policies_list_item:first-child {
   margin-bottom: 22px;
 }
 
-.footer__policies_list_item:last-child{
+.footer__policies_list_item:last-child {
   margin-bottom: 17px;
 }
 
@@ -87,7 +87,7 @@
     padding-bottom: 6px;
   }
 
-  .footer__socials_icons{
+  .footer__socials_icons {
     padding-top: 1px;
   }
 
@@ -102,17 +102,14 @@
     display: flex;
     align-items: center;
 
-    padding-top: 4px;
+    padding-top: 2px;
   }
 
   .footer__policies_list_item {
     margin: 0 31px 0 0;
   }
 
-  .footer__policies_list_item:first-child{
-    margin-bottom: 0;
-  }
-
+  .footer__policies_list_item:first-child,
   .footer__policies_list_item:last-child {
     margin-bottom: 0;
   }
