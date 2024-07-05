@@ -58,7 +58,7 @@
 
 @media screen and (min-width: 768px) {
   .header {
-    height: var(--header-height-desktop);
+    height: calc(var(--header-height-desktop) - 1px);
   }
 
   .header__logo {

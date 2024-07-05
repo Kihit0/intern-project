@@ -1,7 +1,7 @@
 .search {
   display: flex;
 
-  padding: 10px 0 8px;
+  padding: 10px 0 9px;
 }
 
 .search__btn {
@@ -24,12 +24,12 @@
 .search__input {
   width: 100%;
 
-  margin-top: 3px ;
+  margin-top: 2px;
 
   border: none;
 }
 
-.search__input:focus{
+.search__input:focus {
   outline: none;
 }
 
@@ -41,17 +41,17 @@
 
 @media screen and (min-width: 768px) {
   .search__btn {
-    margin: 4px 5px 0 1px;
+    margin: 5px 6px 0 1px;
   }
 
   .search__input {
-    margin-left: 1px;
+    margin-top: 4px;
   }
 }
 
 @media screen and (min-width: 1240px) {
   .search__btn {
-    margin: -1px 7px 0 -1px;
+    margin: 0px 7px 0 -1px;
   }
 
   .search__input {
