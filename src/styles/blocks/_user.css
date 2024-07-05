@@ -54,12 +54,12 @@
   }
 
   .user__name {
-    padding: 2px 0 0 1px;
+    padding: 0 0 2px 1px;
   }
 }
 
 @media screen and (min-width: 1240px) {
   .user__name {
-    padding-top: 0px;
+    padding-bottom: 2px;
   }
 }

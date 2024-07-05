@@ -3,14 +3,11 @@
   {urlImg: "src/assets/images/icons/instagram.svg", alt: "instagram"}]
 %}
 
-{% block socials %}
 
-  {% for icon in icons %}
-    <div class="socials__icon">
-      <a href="#" target="_blank">
-        <img src="{{icon.urlImg}}" alt="{{icon.alt}}"/>
-      </a>
-    </div>
-  {% endfor %}
-
-{% endblock %}
+{% for icon in icons %}
+	<div class="socials__icon">
+		<a href="#" target="_blank">
+			<img src="{{icon.urlImg}}" alt="{{icon.alt}}"/>
+		</a>
+	</div>
+{% endfor %}

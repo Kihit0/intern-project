@@ -92,10 +92,6 @@
 }
 
 @media screen and (min-width: 1240px) {
-  .header {
-    height: calc(var(--header-height-desktop) + 1px);
-  }
-
   .header__logo {
     margin-right: 20px;
   }
