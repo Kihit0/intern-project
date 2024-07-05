@@ -1,19 +1,19 @@
 {% block header %}
-	<header class="header">
-		<div class="header__wrapper container">
-			<div class="header__center">
-				<div class="header__logo">
-					<a href="#">
-						{% include "blocks/_logo.twig" with {'is_dark': true} %}
-					</a>
-				</div>
-				<div class="header__search">
-					{% include "blocks/_search.twig" %}
-				</div>
-			</div>
-			<div class="header__user">
-				{% include "blocks/_user.twig" %}
-			</div>
-		</div>
-	</header>
+  <header class="header">
+    <div class="header__wrapper container">
+      <div class="header__center">
+        <div class="header__logo">
+          <a href="#">
+            {% include "blocks/_logo.twig" with {'is_dark': true} %}
+          </a>
+        </div>
+        <div class="header__search">
+          {% include "blocks/_search.twig" %}
+        </div>
+      </div>
+      <div class="header__user">
+        {% include "blocks/_user.twig" %}
+      </div>
+    </div>
+  </header>   
 {% endblock %}
