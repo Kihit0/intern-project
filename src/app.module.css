@@ -76,8 +76,21 @@
   }
 
   .app__content_items_item:nth-child(4n + 4),
-  .app__content_items_item:nth-child(5n + 5) {
+  .app__content_items_item:nth-child(5n + 5),
+  .app__content_items_item:nth-child(7n +7) {
     margin-right: 0;
     margin-left: 10px;
+  }
+
+  .app__content_items_item:nth-child(9n + 9) {
+    grid-column: 2 / -1;
+    margin-right: 0;
+    margin-left: 10px;
+  }
+
+  .app__content_items_item:nth-child(8n + 8),
+  .app__content_items_item:nth-child(10n + 10) {
+    margin-left: 0;
+    margin-right: 10px;
   }
 }
