@@ -1,0 +1,11 @@
+.title {
+  margin-bottom: 9px;
+
+  text-transform: uppercase;
+  line-height: 36px;
+}
+
+.title__subtitle {
+  line-height: 22.5px;
+}
+

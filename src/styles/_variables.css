@@ -20,9 +20,11 @@
   --color-regent-gray: #8591a5;
   --color-outer-space: #2e3640;
   --color-firefly: #10242d;
+  --color-bunker: #121920;
   --color-black: #000000;
-  --color-cornflower-blue: #4c8bf7;
   --color-sail: #a1d5f6;
+  --color-cornflower-blue: #4c8bf7;
+  --color-royal-blue: #4D85E6;
 
   /* Радиусы*/
   --border-radius-small: 3px;
