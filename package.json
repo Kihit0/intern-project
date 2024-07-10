@@ -14,13 +14,13 @@
     "classnames": "^2.5.1",
     "date-fns": "^3.6.0",
     "formik": "^2.4.6",
+    "moment": "^2.30.1",
     "normalize.css": "^8.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-input-mask": "^3.0.0-alpha.2",
     "react-router-dom": "^6.23.1",
-    "react-select": "^5.8.0",
-    "shave": "^5.0.4"
+    "react-select": "^5.8.0"
   },
   "browserslist": [
     "> 0.25%, not dead",
@@ -41,6 +41,7 @@
     "postcss-loader": "^8.1.1",
     "prettier": "^3.3.2",
     "prettier-plugin-twig": "^1.0.1",
+    "shave": "^5.0.4",
     "style-loader": "^4.0.0",
     "twig-parser": "^0.2.2",
     "webpack": "^5.92.1",

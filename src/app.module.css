@@ -1,9 +1,9 @@
 .app {
-  padding: 13px 0 40px;
+  padding: 11px 0 40px;
 }
 
 .app__title {
-  padding-bottom: 38px;
+  padding-bottom: 39px;
 }
 
 .app__links_wrapper {
@@ -15,6 +15,8 @@
 .app__links_item {
   padding: 0 6px 6px 5px;
   margin-right: 24px;
+
+  cursor: pointer;
 }
 
 .app__links_item-active {
@@ -23,6 +25,15 @@
 
 .app__content {
   padding-top: 26px;
+}
+
+.app__loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  margin-bottom: 20px;
 }
 
 .accent {
@@ -34,6 +45,14 @@
 }
 
 @media screen and (min-width: 768px) {
+  .app {
+    padding: 17px 0 49px;
+  }
+
+  .app__title {
+    margin-bottom: 10px;
+  }
+
   .app__content_items {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -44,25 +63,54 @@
   }
 
   .app__content_items_item {
-    margin-right: 10px;
+    margin: 0 10px 20px 0;
   }
 
   .app__content_items_item:nth-child(3n + 2) {
     margin: 0 0 0 10px;
   }
+
   .app__content_items_item:nth-child(3n + 3) {
     margin-right: 0;
+  }
+
+  .app__content_items-full {
+    grid-template-columns: 1fr;
+  }
+
+  .app__content_items_item-full:nth-child(n) {
+    margin: 0 0 20px 0;
+  }
+
+  .app__wrapper_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  .app__btn {
+    width: 156px;
   }
 }
 
 @media screen and (min-width: 1240px) {
+  .app__title {
+    padding-bottom: 58px;
+  }
+
   .app__content_items {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .app__content_items_item {
+    margin-right: 10px;
+  }
+
   .app__content_items_item:nth-child(3n + 3) {
     grid-column: 1 / -2;
-    margin-right: 10px;
+    margin-right: 8px;
     margin-left: 0;
   }
 
@@ -72,25 +120,37 @@
 
   .app__content_items_item:nth-child(3n + 2),
   .app__content_items_item:nth-child(3n + 3) {
-    margin-right: 10px;
+    margin-right: 8px;
   }
 
   .app__content_items_item:nth-child(4n + 4),
   .app__content_items_item:nth-child(5n + 5),
-  .app__content_items_item:nth-child(7n +7) {
+  .app__content_items_item:nth-child(7n + 7) {
     margin-right: 0;
-    margin-left: 10px;
+    margin-left: 8px;
   }
 
   .app__content_items_item:nth-child(9n + 9) {
     grid-column: 2 / -1;
     margin-right: 0;
-    margin-left: 10px;
+    margin-left: 8px;
   }
 
   .app__content_items_item:nth-child(8n + 8),
   .app__content_items_item:nth-child(10n + 10) {
     margin-left: 0;
-    margin-right: 10px;
+    margin-right: 8px;
+  }
+
+  .app__content_items-full {
+    grid-template-columns: 1fr;
+  }
+
+  .app__content_items_item-full:nth-child(n) {
+    margin: 0 0 20px 0;
+  }
+
+  .app__content_items_item-full:nth-child(3) {
+    grid-row: auto;
   }
 }

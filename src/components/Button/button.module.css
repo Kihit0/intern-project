@@ -11,6 +11,10 @@
   border-radius: var(--border-radius-small);
 }
 
+.btn:disabled{
+  opacity: 0.5;
+}
+
 .btn-default {
   color: var(--color-white);
 

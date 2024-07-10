@@ -1,11 +1,27 @@
 .title {
-  margin-bottom: 9px;
+  margin-bottom: 10px;
 
   text-transform: uppercase;
-  line-height: 36px;
 }
 
 .title__subtitle {
   line-height: 22.5px;
 }
 
+@media screen and (min-width: 768px) {
+  .title {
+    width: 55%;
+
+    margin-bottom: 20px;
+  }
+
+  .title__subtitle {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .title__subtitle {
+    width: 35%;
+  }
+}

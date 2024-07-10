@@ -1,29 +1,75 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import styles from "./app.module.css";
 import classNames from "classnames/bind";
+
 import Title from "./components/Title/Title";
 import Card from "./components/Card/Card";
 import Button from "./components/Button/Button";
-import { Link } from "react-router-dom";
+import Loader from "./components/Loader/Loader";
 
 const cx = classNames.bind(styles);
-const type = [
-  "news",
-  "promotions"
-]
+
+const types = [
+  {
+    lang: ["news", "Новости"],
+    stepPagination: 5,
+  },
+  {
+    lang: ["promotions", "Акции"],
+    stepPagination: 3,
+  },
+];
 
 const App = () => {
-  const [isActiveNews, setIsActiveNews] = React.useState(true);
+  const [activeType, setActiveType] = React.useState("news");
+  const [pagination, setPagination] = React.useState(0);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [data, setData] = React.useState([]);
 
-  const classLinkNews = cx({
-    app__links_item: true,
-    "app__links_item-active": isActiveNews,
-  });
+  const getStepPagination = () => {
+    return types.find((item) => item.lang.indexOf(activeType) !== -1)
+      .stepPagination;
+  };
 
-  const classLinkPromotions = cx({
-    app__links_item: true,
-    "app__links_item-active": !isActiveNews,
-  });
+  const getData = async () => {
+    try {
+      setIsLoading(true);
+
+      const stepPagination = getStepPagination();
+      const response = await fetch(`http://localhost/api/` + activeType);
+      const result = await response.json();
+
+      return result.slice(pagination, pagination + stepPagination);
+    } catch (err) {
+      console.log("Error: ", err);
+      return [];
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleClickLink = (type) => {
+    if (type !== activeType) {
+      setActiveType(type);
+      setPagination(0);
+      setData([]);
+    }
+  };
+
+  const handleClickButton = () => {
+    if (isLoading) {
+      return;
+    }
+    setPagination((value) => value + getStepPagination());
+  };
+
+  React.useEffect(() => {
+    const data = getData();
+
+    data.then((item) => setData((value) => value.concat(item)));
+  }, [activeType, pagination]);
 
   return (
     <div className={styles.app}>
@@ -49,86 +95,69 @@ const App = () => {
         </div>
         <div className={styles.app__links}>
           <div className={styles.app__links_wrapper}>
-            <span className={classLinkNews}>Новости</span>
-            <span className={classLinkPromotions}>Акции</span>
+            {types.map((type, idx) => {
+              return (
+                <span
+                  className={cx({
+                    app__links_item: true,
+                    "app__links_item-active": activeType === type.lang[0],
+                  })}
+                  onClick={() => handleClickLink(type.lang[0])}
+                  key={idx}
+                >
+                  {type.lang[1]}
+                </span>
+              );
+            })}
           </div>
         </div>
         <div className={styles.app__content}>
-          <div className={styles.app__content_items}>
-            <Link className={styles.app__content_items_item} to="/news/1">
-              <Card
-                idx={1}
-                isActiveNews={isActiveNews}
-              />
-            </Link>
-            <Link className={styles.app__content_items_item} to="/news/1">
-              <Card
-                idx={2}
-                isActiveNews={isActiveNews}
-                image="https://img.freepik.com/free-photo/monstera-desktop-wallpaper-background-wet-leaves-vivid-tone_53876-176741.jpg?t=st=1720515352~exp=1720518952~hmac=0208e14be64b582ac7f47247845a8f2b7ca2fc650c434588c4c46fe633f397d5&w=740"
-              />
-            </Link>
-            <Link className={styles.app__content_items_item} to="/news/1">
-              <Card
-                idx={3}
-                isActiveNews={isActiveNews}
-                image="https://img.freepik.com/free-photo/monstera-desktop-wallpaper-background-wet-leaves-vivid-tone_53876-176741.jpg?t=st=1720515352~exp=1720518952~hmac=0208e14be64b582ac7f47247845a8f2b7ca2fc650c434588c4c46fe633f397d5&w=740"
-              />
-            </Link>
-            <Link className={styles.app__content_items_item} to="/news/1">
-              <Card
-                idx={4}
-                isActiveNews={isActiveNews}
-                image="https://img.freepik.com/free-photo/monstera-desktop-wallpaper-background-wet-leaves-vivid-tone_53876-176741.jpg?t=st=1720515352~exp=1720518952~hmac=0208e14be64b582ac7f47247845a8f2b7ca2fc650c434588c4c46fe633f397d5&w=740"
-              />
-            </Link>
-            <Link className={styles.app__content_items_item} to="/news/1">
-              <Card
-                idx={5}
-                isActiveNews={isActiveNews}
-                image="https://img.freepik.com/free-photo/monstera-desktop-wallpaper-background-wet-leaves-vivid-tone_53876-176741.jpg?t=st=1720515352~exp=1720518952~hmac=0208e14be64b582ac7f47247845a8f2b7ca2fc650c434588c4c46fe633f397d5&w=740"
-              />
-            </Link>
-            <Link className={styles.app__content_items_item} to="/news/1">
-              <Card
-                idx={6}
-                isActiveNews={isActiveNews}
-                image="https://img.freepik.com/free-photo/monstera-desktop-wallpaper-background-wet-leaves-vivid-tone_53876-176741.jpg?t=st=1720515352~exp=1720518952~hmac=0208e14be64b582ac7f47247845a8f2b7ca2fc650c434588c4c46fe633f397d5&w=740"
-              />
-            </Link>
-            <Link className={styles.app__content_items_item} to="/news/1">
-              <Card
-                idx={7}
-                isActiveNews={isActiveNews}
-                image="https://img.freepik.com/free-photo/monstera-desktop-wallpaper-background-wet-leaves-vivid-tone_53876-176741.jpg?t=st=1720515352~exp=1720518952~hmac=0208e14be64b582ac7f47247845a8f2b7ca2fc650c434588c4c46fe633f397d5&w=740"
-              />
-            </Link>
-            <Link className={styles.app__content_items_item} to="/news/1">
-              <Card
-                idx={8}
-                isActiveNews={isActiveNews}
-                image="https://img.freepik.com/free-photo/monstera-desktop-wallpaper-background-wet-leaves-vivid-tone_53876-176741.jpg?t=st=1720515352~exp=1720518952~hmac=0208e14be64b582ac7f47247845a8f2b7ca2fc650c434588c4c46fe633f397d5&w=740"
-              />
-            </Link>
-            <Link className={styles.app__content_items_item} to="/news/1">
-              <Card
-                idx={9}
-                isActiveNews={isActiveNews}
-                image="https://img.freepik.com/free-photo/monstera-desktop-wallpaper-background-wet-leaves-vivid-tone_53876-176741.jpg?t=st=1720515352~exp=1720518952~hmac=0208e14be64b582ac7f47247845a8f2b7ca2fc650c434588c4c46fe633f397d5&w=740"
-              />
-            </Link>
-            <Link className={styles.app__content_items_item} to="/news/1">
-              <Card
-                idx={10}
-                isActiveNews={isActiveNews}
-                image="https://img.freepik.com/free-photo/monstera-desktop-wallpaper-background-wet-leaves-vivid-tone_53876-176741.jpg?t=st=1720515352~exp=1720518952~hmac=0208e14be64b582ac7f47247845a8f2b7ca2fc650c434588c4c46fe633f397d5&w=740"
-              />
-            </Link>
+          <div
+            className={cx({
+              app__content_items: true,
+              "app__content_items-full": activeType === "promotions",
+            })}
+          >
+            {data &&
+              Array.isArray(data) &&
+              data.map((item) => {
+                return (
+                  <Link
+                    className={cx({
+                      app__content_items_item: true,
+                      "app__content_items_item-full":
+                        activeType === "promotions",
+                    })}
+                    to={`/${activeType}/${item.id}`}
+                    key={item.id}
+                  >
+                    <Card
+                      idx={item.id}
+                      type={activeType}
+                      date={item.pubDate}
+                      title={item.title}
+                      image={item.image ?? item.link}
+                      text={item.previewtext}
+                    />
+                  </Link>
+                );
+              })}
           </div>
         </div>
-        <div className={styles.app__btn}>
-          <Button>Смотреть еще</Button>
-        </div>
+        {isLoading && (
+          <div className={styles.app__loader}>
+            <Loader />
+          </div>
+        )}
+        {!isLoading && (
+          <div className={styles.app__wrapper_btn}>
+            <div className={styles.app__btn}>
+              <Button onClick={handleClickButton} disabled={isLoading}>
+                Смотреть еще
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
