@@ -77,8 +77,7 @@
     margin-right: 0;
   }
   .app__content_items_item-full:nth-child(n) {
-    margin-right: 0;
-    margin-left: 0;
+    margin-inline: 0;
   }
   .app__content_items-full {
     grid-template-columns: 1fr;
@@ -118,26 +117,22 @@
     grid-row: 2;
   }
 
-  /* Написать margin: 0 10px 20px 0 ? у меня для всех определено, что они сразу 20px вниз или так оставить? */
   .app__content_items_item:nth-child(3n),
   .app__content_items_item:nth-child(6n) {
-    margin-left: 0;
-    margin-right: 10px;
+    margin-inline: 0 10px
   }
 
   .app__content_items_item:nth-child(4n),
   .app__content_items_item:nth-child(5n),
   .app__content_items_item:nth-child(7n),
   .app__content_items_item:nth-child(9n) {
-    margin-right: 0;
-    margin-left: 10px;
+    margin-inline: 10px 0;
   }
 
   /* Переопределяю из-за того, что сверху они становятся другими и так же не могу перенести их наверх из-за этого же */
   .app__content_items_item:nth-child(8n),
   .app__content_items_item:nth-child(10n) {
-    margin-left: 0;
-    margin-right: 10px;
+    margin-inline: 0 10px
   }
 
   /* И никак не смог найти одну зависимость, постарался сократить и объядинить все в одно */
