@@ -1,5 +1,4 @@
 /* DEFAULT */
-
 .card {
   position: relative;
   overflow: hidden;
@@ -15,7 +14,6 @@
 
 .card__wrapper {
   width: 100%;
-
 }
 
 .card__wrapper_img {
@@ -137,7 +135,7 @@
   height: 100%;
 }
 
-.card__shading-view-background{
+.card__shading-view-background {
   position: absolute;
   top: 0;
   left: 0;
@@ -171,7 +169,6 @@
 
   color: var(--color-white);
 }
-
 
 .card__content_text-view-background,
 .card__footer-view-background {

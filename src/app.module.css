@@ -76,7 +76,10 @@
     grid-column: 1 / -1;
     margin-right: 0;
   }
-
+  .app__content_items_item-full:nth-child(n) {
+    margin-right: 0;
+    margin-left: 0;
+  }
   .app__content_items-full {
     grid-template-columns: 1fr;
   }
@@ -139,13 +142,13 @@
 
   /* И никак не смог найти одну зависимость, постарался сократить и объядинить все в одно */
   .app__content_items_item:not(:nth-child(4n))
-  :not(:nth-child(3n))
-  :not(:nth-child(5n))
-  :not(:nth-child(6n))
-  :not(:nth-child(7n))
-  :not(:nth-child(9n))
-  :not(:nth-child(8n))
-  :not(:nth-child(10n)) {
+    :not(:nth-child(3n))
+    :not(:nth-child(5n))
+    :not(:nth-child(6n))
+    :not(:nth-child(7n))
+    :not(:nth-child(9n))
+    :not(:nth-child(8n))
+    :not(:nth-child(10n)) {
     margin: 0 10px;
   }
 
