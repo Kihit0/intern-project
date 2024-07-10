@@ -27,7 +27,8 @@
   padding-top: 26px;
 }
 
-.app__content_items_item {
+.app__content_items_item,
+.app__content_items_item-full:nth-child(n) {
   display: block;
   margin-bottom: 20px;
 }
@@ -64,11 +65,11 @@
   }
 
   .app__content_items_item {
-    margin: 0 10px 20px 0;
+    margin-right: 10px;
   }
 
-  .app__content_items_item:nth-child(3n + 2) {
-    margin: 0 10px 0 10px;
+  .app__content_items_item:nth-child(2n) {
+    margin-left: 10px;
   }
 
   .app__content_items_item:nth-child(3n + 3) {
@@ -78,10 +79,6 @@
 
   .app__content_items-full {
     grid-template-columns: 1fr;
-  }
-
-  .app__content_items_item-full:nth-child(n) {
-    margin: 0 0 20px 0;
   }
 
   .app__wrapper_btn {
@@ -106,43 +103,54 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .app__content_items_item {
-    margin-right: 10px;
-  }
-
-  .app__content_items_item:nth-child(3n + 3) {
+  .app__content_items_item:nth-child(3n) {
     grid-column: 1 / -2;
   }
 
-  .app__content_items_item:nth-child(4n + 4),
-  .app__content_items_item:nth-child(5n + 5),
-  .app__content_items_item:nth-child(7n + 7),
-  .app__content_items_item:nth-child(9n + 9),
-  .app__content_items_item:nth-child(8n + 8),
-  .app__content_items_item:nth-child(10n + 10) {
-    margin: 0 0 20px 10px;
-  }
-
-  .app__content_items_item:nth-child(3n + 3),
-  .app__content_items_item:nth-child(8n + 8),
-  .app__content_items_item:nth-child(10n + 10) {
-    margin: 0 10px 20px 0;
+  .app__content_items_item:nth-child(9n) {
+    grid-column: 2 / -1;
   }
 
   .app__content_items_item:nth-child(3) {
     grid-row: 2;
   }
 
-  .app__content_items_item:nth-child(9n + 9) {
-    grid-column: 2 / -1;
+  /* Написать margin: 0 10px 20px 0 ? у меня для всех определено, что они сразу 20px вниз или так оставить? */
+  .app__content_items_item:nth-child(3n),
+  .app__content_items_item:nth-child(6n) {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+  .app__content_items_item:nth-child(4n),
+  .app__content_items_item:nth-child(5n),
+  .app__content_items_item:nth-child(7n),
+  .app__content_items_item:nth-child(9n) {
+    margin-right: 0;
+    margin-left: 10px;
+  }
+
+  /* Переопределяю из-за того, что сверху они становятся другими и так же не могу перенести их наверх из-за этого же */
+  .app__content_items_item:nth-child(8n),
+  .app__content_items_item:nth-child(10n) {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+  /* И никак не смог найти одну зависимость, постарался сократить и объядинить все в одно */
+  .app__content_items_item:not(:nth-child(4n))
+  :not(:nth-child(3n))
+  :not(:nth-child(5n))
+  :not(:nth-child(6n))
+  :not(:nth-child(7n))
+  :not(:nth-child(9n))
+  :not(:nth-child(8n))
+  :not(:nth-child(10n)) {
+    margin: 0 10px;
   }
 
   .app__content_items-full {
     grid-template-columns: 1fr;
-  }
-
-  .app__content_items_item-full:nth-child(n) {
-    margin: 0 0 20px 0;
   }
 
   .app__content_items_item-full:nth-child(3) {
