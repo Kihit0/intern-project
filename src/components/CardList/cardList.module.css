@@ -78,7 +78,8 @@
     display: block;
   }
 
-  .list__item-full {
+  .list__item-full,
+  .list__item-full:nth-child(n) {
     margin-inline: 0;
   }
 }

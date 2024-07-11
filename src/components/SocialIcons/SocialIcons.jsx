@@ -34,7 +34,7 @@ const SocialIcons = (props) => {
   ];
 
   return (
-    <>
+    <div className={styles.icons}>
       {icons.map((item, index) => {
         return (
           <div
@@ -49,7 +49,7 @@ const SocialIcons = (props) => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 
