@@ -5,10 +5,8 @@ import shave from "shave";
 import styles from "./card.module.css";
 import classNames from "classnames/bind";
 
-import Like from "../Icons/Like";
-import Comment from "../Icons/Comment";
-import View from "../Icons/View";
 import Star from "../Icons/Star";
+import SocialIcons from "../SocialIcons/SocialIcons";
 
 moment.locale("ru");
 
@@ -25,36 +23,24 @@ const Card = (props) => {
 
   const urlImage = image ?? IMAGE_DEFAULT;
 
-  const colorIcons = isViewBackground
-    ? "var(--color-white)"
-    : "var(--color-regent-gray)";
   const colorStrokeStar = isViewBackground
     ? "var(--color-white)"
     : "var(--color-cornflower-blue)";
-  const fillLike = isViewBackground ? "var(--color-white)" : "none";
 
   const dateConvert = moment.unix(Number(date)).utc();
   const dateNormalize = moment(dateConvert).format("L");
 
   React.useEffect(() => {
     shave(`.${styles.card__content_text}`, 70, { character: "..." });
-  }, []);
 
-  const icons = [
-    {
-      icon: <Like fill={fillLike} stroke={colorIcons} />,
-      count: 123,
-    },
-    {
-      icon: <Comment stroke={colorIcons} />,
-      count: 76,
-    },
-    {
-      icon: <View stroke={colorIcons} fill={colorIcons} />,
-      count: 225,
-    },
-  ];
+    if (window.innerWidth < 768) {
+      shave(`.${styles["card__content_text-view-background"]}`, 50, {
+        character: "...",
+      });
+    }
 
+  }, [window.innerWidth]);
+  console.log(window.innerWidth)
   return (
     <div
       className={cx({
@@ -111,23 +97,31 @@ const Card = (props) => {
             "card__content-view-row": isViewRow,
           })}
         >
-          <div className={styles.card__content_wrapper_title}>
-            <h3 className={styles.card__content_title}>{title}</h3>
-          </div>
-          <div
-            className={cx({
-              card__content_wrapper_text: true,
-              "card__content_wrapper_text-view-row": isViewRow,
-            })}
-          >
-            <p
+          <div className={styles.card__content_wrapper}>
+            <div
               className={cx({
-                card__content_text: true,
-                "card__content_text-view-background": isViewBackground,
+                card__content_wrapper_title: true,
+                "card__content_wrapper_title-view-background": isViewBackground,
               })}
             >
-              {text}
-            </p>
+              <h3 className={styles.card__content_title}>{title}</h3>
+            </div>
+            <div
+              className={cx({
+                card__content_wrapper_text: true,
+                "card__content_wrapper_text-view-background": isViewBackground,
+                "card__content_wrapper_text-view-row": isViewRow,
+              })}
+            >
+              <p
+                className={cx({
+                  card__content_text: true,
+                  "card__content_text-view-background": isViewBackground,
+                })}
+              >
+                {text}
+              </p>
+            </div>
           </div>
           <div
             className={cx({
@@ -149,22 +143,11 @@ const Card = (props) => {
               )}
             </div>
             <div className={styles.card__footer_icons}>
-              {icons.map((item, index) => {
-                return (
-                  <div
-                    className={cx({
-                      card__footer_icons_item: true,
-                      "card__footer_icons_item-view-row": isViewRow,
-                    })}
-                    key={index}
-                  >
-                    {item.icon}
-                    <span className={styles.card__footer_icons_item_count}>
-                      {item.count}
-                    </span>
-                  </div>
-                );
-              })}
+              <SocialIcons
+                isViewDefault={isViewBackground}
+                isViewWithout={isViewRow}
+                without={`comment`}
+              />
             </div>
           </div>
         </div>

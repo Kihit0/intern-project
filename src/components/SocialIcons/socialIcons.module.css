@@ -1,0 +1,22 @@
+.icons__item {
+  display: flex;
+  align-items: center;
+
+  margin: -1px 11px 0 0;
+}
+
+.icons__item:last-child {
+  margin-right: 0;
+}
+
+.icons__item_count {
+  margin-left: 5px;
+}
+
+.icons__item_count:last-child {
+  margin-left: 6px;
+}
+
+.icons__item-without-comment:nth-child(2) {
+  display: none;
+}

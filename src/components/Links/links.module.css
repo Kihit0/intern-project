@@ -1,0 +1,10 @@
+.links__item {
+  padding: 0 6px 7px 5px;
+  margin-right: 25px;
+
+  cursor: pointer;
+}
+
+.links__item-active {
+  border-bottom: 2px solid var(--color-cornflower-blue);
+}
