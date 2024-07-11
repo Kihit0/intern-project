@@ -62,11 +62,7 @@
     margin-right: 7px;
   }
 
-  .list__item:is(
-      :nth-child(9n + 4),
-      :nth-child(9n + 5),
-      :nth-child(9n + 7),
-    ) {
+  .list__item:is(:nth-child(9n + 4), :nth-child(9n + 5), :nth-child(9n + 7), ) {
     margin-left: 13px;
   }
 
@@ -74,7 +70,7 @@
     margin-inline: 6.5px;
   }
 
-  .list__item:nth-child(9n){
+  .list__item:nth-child(9n) {
     margin-left: 6px;
   }
 

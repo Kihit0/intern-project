@@ -17,7 +17,7 @@ const Api = (endpoint) =>
             method: httpMethod,
           };
 
-          if(props?.id) {
+          if (props?.id) {
             url.href += `/${props.id}`;
           }
 

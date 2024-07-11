@@ -16,7 +16,7 @@ const SocialIcons = (props) => {
     ? "var(--color-white)"
     : "var(--color-regent-gray)";
 
-  const classWithout = `icons__item-without-${without}`
+  const classWithout = `icons__item-without-${without}`;
 
   const icons = [
     {

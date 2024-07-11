@@ -38,9 +38,8 @@ const Card = (props) => {
         character: "...",
       });
     }
-
   }, [window.innerWidth]);
-  console.log(window.innerWidth)
+
   return (
     <div
       className={cx({

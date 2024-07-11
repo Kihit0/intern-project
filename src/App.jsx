@@ -36,9 +36,7 @@ const App = () => {
   };
 
   React.useEffect(() => {
-    const data = getManyItem(activeType);
-
-    data.then((item) => {
+    getManyItem(activeType).then((item) => {
       setData((value) =>
         value.concat(
           item.slice(pagination, pagination + stepPagination[activeType])

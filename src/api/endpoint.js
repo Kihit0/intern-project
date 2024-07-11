@@ -5,7 +5,4 @@ const api = Api;
 const getManyItem = (endpoint) => api(endpoint).getManyItem();
 const getOneItem = (endpoint, payload) => api(endpoint).getOneItem(payload);
 
-export {
-  getManyItem,
-  getOneItem
-}
+export { getManyItem, getOneItem };
