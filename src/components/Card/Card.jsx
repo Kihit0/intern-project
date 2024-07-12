@@ -1,121 +1,130 @@
-import React from "react";
-import moment from "moment";
+import React, { useEffect, useState } from "react";
 import shave from "shave";
 
-import styles from "./card.module.css";
+import styles from "./Card.module.css";
 import classNames from "classnames/bind";
 
-import Star from "../Icons/Star";
-import SocialIcons from "../SocialIcons/SocialIcons";
-
-moment.locale("ru");
+import LikeIcon from "../Icons/LikeIcon";
+import CommentIcon from "../Icons/CommentIcon";
+import ViewIcon from "../Icons/ViewIcon";
+import Stats from "../Stats/Stats";
+import FavoriteIcon from "../FavoriteIcon/FavoriteIcon";
+import DateInfo from "../DateInfo/DateInfo";
 
 const cx = classNames.bind(styles);
 
-const IMAGE_DEFAULT = "src/components/Card/images/default-bcg.jpg";
+const IMAGE_DEFAULT = "src/assets/images/default-card-header.jpg";
 
 const Card = (props) => {
-  const { idx, image, type, date, title, text } = props;
+  const [width, setWidth] = useState(window.innerWidth);
+  const { idx, image, date, title, text, view } = props;
 
-  const isViewBackground = type === "news" && idx % 3 === 0;
-  const isViewRow = type === "promotions";
+  const isViewBackground =
+    Array.isArray(view) && view.indexOf("background") !== -1 && idx % 3 === 0;
+  const isViewRow = typeof view === "string" && view === "row";
   const isViewRowReverse = isViewRow && idx % 2 === 0;
 
-  const urlImage = image ?? IMAGE_DEFAULT;
+  const colorIcons = isViewBackground ? "var(--color-white)" : null;
 
-  const colorStrokeStar = isViewBackground
-    ? "var(--color-white)"
-    : "var(--color-cornflower-blue)";
+  const getIcons = () => {
+    const iconItem = [
+      {
+        icon: <LikeIcon fill={colorIcons} stroke={colorIcons} />,
+        count: 123,
+      },
+      {
+        icon: <CommentIcon stroke={colorIcons} />,
+        count: 76,
+      },
+      {
+        icon: <ViewIcon color={colorIcons} />,
+        count: 225,
+      },
+    ];
 
-  const dateConvert = moment.unix(Number(date)).utc();
-  const dateNormalize = moment(dateConvert).format("L");
+    if (isViewRow) {
+      return iconItem.filter((item) => item.icon.type.name !== "CommentIcon");
+    }
 
-  React.useEffect(() => {
-    shave(`.${styles.card__content_text}`, 70, { character: "..." });
+    return iconItem;
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    shave(`.${styles.content__text}`, 70, { character: "..." });
 
     if (window.innerWidth < 768) {
-      shave(`.${styles["card__content_text-view-background"]}`, 50, {
+      shave(`.${styles["content__text-background"]}`, 50, {
         character: "...",
       });
     }
-  }, [window.innerWidth]);
+  }, [width]);
 
   return (
-    <div
-      className={cx({
-        card: true,
-        "card-view-row": isViewRow,
-      })}
-    >
+    <div className={cx(styles.card, { "card-row": isViewRow })}>
       <div
-        className={cx({
-          card__wrapper: true,
-          "card__wrapper-view-row": isViewRow,
-          "card__wrapper-view-row-reverse": isViewRowReverse,
+        className={cx(styles.wrapper, {
+          "wrapper-row": isViewRow,
+          "wrapper-row-reverse": isViewRowReverse,
         })}
       >
         <div
-          className={cx({
-            card__wrapper_img: true,
-            "card__wrapper_img-view-background": isViewBackground,
-            "card__wrapper_img-view-row": isViewRow,
-            "card__wrapper_img-view-row-reverse": isViewRowReverse,
+          className={cx(styles.wrapper__img, {
+            "wrapper__img-background": isViewBackground,
+            "wrapper__img-row": isViewRow,
+            "wrapper__img-row-reverse": isViewRowReverse,
           })}
         >
-          <div
-            className={cx({
-              card__shading: true,
-              "card__shading-view-background": isViewBackground,
-            })}
-          ></div>
+          {isViewBackground && <div className={styles.shading}></div>}
           <img
-            className={cx({
-              card__img: true,
-              "card__img-view-background": isViewBackground,
+            className={cx(styles.img, {
+              "img-background": isViewBackground,
             })}
-            src={urlImage}
-            alt="фото карточки"
+            src={image ?? IMAGE_DEFAULT}
+            alt="Заголовок карточки"
           />
-          <div
-            className={cx({
-              card__favorite: true,
-              "card__favorite-view-background": isViewBackground,
-              "card__favorite-view-row": isViewRow,
-              "card__favorite-view-row-reverse": isViewRowReverse,
+          <FavoriteIcon
+            className={cx(styles.favorite, {
+              "favorite-background": isViewBackground,
+              "favorite-row": isViewRow,
+              "favorite-row-reverse": isViewRowReverse,
             })}
-          >
-            <div className={styles.card__favorite_img}>
-              <Star stroke={colorStrokeStar} />
-            </div>
-          </div>
+            color={isViewBackground ? "var(--color-white)" : null}
+          />
         </div>
         <div
-          className={cx({
-            card__content: true,
-            "card__content-view-background": isViewBackground,
-            "card__content-view-row": isViewRow,
+          className={cx(styles.content, {
+            "content-background": isViewBackground,
+            "content-row": isViewRow,
           })}
         >
-          <div className={styles.card__content_wrapper}>
+          <div className={styles.content__wrapper}>
             <div
-              className={cx({
-                card__content_wrapper_title: true,
-                "card__content_wrapper_title-view-background": isViewBackground,
+              className={cx(styles.content__wrapper__title, {
+                "content__wrapper_title-background": isViewBackground,
               })}
             >
-              <h3 className={styles.card__content_title}>{title}</h3>
+              <h3 className={styles.content__title}>{title}</h3>
             </div>
             <div
-              className={cx({
-                card__content_wrapper_text: true,
-                "card__content_wrapper_text-view-background": isViewBackground,
-                "card__content_wrapper_text-view-row": isViewRow,
+              className={cx(styles.content__wrapper_text, {
+                "content__wrapper_text-background": isViewBackground,
+                "content__wrapper_text-row": isViewRow,
               })}
             >
               <p
-                className={cx({
-                  card__content_text: true,
-                  "card__content_text-view-background": isViewBackground,
+                className={cx(styles.content__text, {
+                  "content__text-background": isViewBackground,
                 })}
               >
                 {text}
@@ -123,30 +132,23 @@ const Card = (props) => {
             </div>
           </div>
           <div
-            className={cx({
-              card__footer: true,
-              "card__footer-view-background": isViewBackground,
+            className={cx(styles.footer, {
+              "footer-background": isViewBackground,
             })}
           >
-            <div className={styles.card__footer_date}>
-              <span>{dateNormalize}</span>
-              {isViewRow && (
-                <span
-                  className={cx({
-                    card__footer_date_text: true,
-                    "card__footer_date_text-view-row": isViewRow,
-                  })}
-                >
-                  Предложение активно
-                </span>
-              )}
+            <div className={styles.footer__date}>
+              <DateInfo
+                date={date}
+                isViewInfo={isViewRow}
+                className={cx(styles.footer__date_text, {
+                  "footer__date_text-row": isViewRow,
+                })}
+              >
+                Предложение активно
+              </DateInfo>
             </div>
-            <div className={styles.card__footer_icons}>
-              <SocialIcons
-                isViewDefault={isViewBackground}
-                isViewWithout={isViewRow}
-                without={`comment`}
-              />
+            <div className={styles.footer__icons}>
+              <Stats icons={getIcons()} />
             </div>
           </div>
         </div>

@@ -1,32 +1,29 @@
-const API_URL = "http://localhost/api";
+const API_URL = "http://localhost/api/";
 
-const camelToCase = (str) =>
-  str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
+class Api {
+  constructor(endpoint) {
+    this.endpoint = endpoint;
+  }
 
-const Api = (endpoint) =>
-  new Proxy(
-    {},
-    {
-      get(_, method) {
-        return async (props) => {
-          const apiMethod = camelToCase(method);
-          const httpMethod = apiMethod.split("_")[0].toUpperCase();
-          const url = new URL(`${API_URL}/${endpoint}`);
+  async fetchData(props) {
+    try {
+      const url = API_URL + this.endpoint;
+      const idUrl = props?.id ? `/${id}` : "";
 
-          const options = {
-            method: httpMethod,
-          };
+      const response = await fetch(url + idUrl);
 
-          if (props?.id) {
-            url.href += `/${props.id}`;
-          }
+      if (!response.ok) {
+        console.log("Err: " + response.statusText);
+      }
 
-          const response = await fetch(url, options);
+      const data = await response.json();
+      const result = Object.assign({ total: data.length }, { data });
 
-          return response.json();
-        };
-      },
+      return result;
+    } catch (err) {
+      console.log("Err: " + err.message);
     }
-  );
+  }
+}
 
 export default Api;

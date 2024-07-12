@@ -5,20 +5,18 @@
   padding: 10px 20px;
 
   font-size: var(--font-size-text-small);
+  font-weight: 700;
+  color: var(--color-white);
 
   cursor: pointer;
   background-color: inherit;
   border: none;
   border-radius: var(--border-radius-small);
+
+  background-color: var(--color-royal-blue);
+  border: var(--border-solid-small) #4077d6;
 }
 
 .btn:disabled {
   opacity: 0.5;
-}
-
-.btn-default {
-  color: var(--color-white);
-
-  background-color: var(--color-royal-blue);
-  border: var(--border-solid-small) #4077d6;
 }

@@ -2,66 +2,14 @@
   padding: 11px 0 40px;
 }
 
-.app__title {
-  padding-bottom: 39px;
-}
-
-.app__links_wrapper {
-  display: flex;
-
-  margin-top: -1px;
-
-  border-bottom: var(--border-solid-small) var(--color-cornflower-blue);
-}
-
-.app__content {
-  padding-top: 26px;
-}
-
-.app__loader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-
-  margin-bottom: 20px;
-}
-
-.accent {
-  color: var(--color-cornflower-blue);
-}
-
-.link {
-  text-decoration: underline;
-}
-
 @media screen and (min-width: 768px) {
   .app {
     padding: 17px 0 50px;
-  }
-
-  .app__title {
-    margin-bottom: 9px;
-  }
-
-  .app__wrapper_btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-  }
-
-  .app__btn {
-    width: 155px;
   }
 }
 
 @media screen and (min-width: 1240px) {
   .app {
     padding-bottom: 70px;
-  }
-  .app__title {
-    padding-bottom: 59px;
   }
 }

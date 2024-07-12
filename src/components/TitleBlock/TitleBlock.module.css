@@ -5,8 +5,9 @@
   letter-spacing: 0.8px;
 }
 
-.title__subtitle {
+.subtitle {
   line-height: 22.5px;
+  color: var(--color-outer-space);
 
   transform: translateY(-0.4px);
 }
@@ -18,13 +19,7 @@
     margin-bottom: 20px;
   }
 
-  .title__subtitle {
-    width: 60%;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .title__subtitle {
-    width: 35%;
+  .subtitle__wrapper {
+    max-width: 450px;
   }
 }

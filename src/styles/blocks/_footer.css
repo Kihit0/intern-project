@@ -40,7 +40,7 @@
 .footer__policies_list {
   width: 100%;
 
-  padding: 4px 0 2px;
+  padding: 3px 0 2px;
 
   text-align: center;
 
@@ -48,17 +48,13 @@
 }
 
 .footer__policies_list_item {
-  margin-bottom: 20px;
+  margin-bottom: 21px;
 
   transition: opacity 0.2s ease-in-out;
 }
 
-.footer__policies_list_item:first-child {
-  margin-bottom: 22px;
-}
-
 .footer__policies_list_item:last-child {
-  margin-bottom: 17px;
+  margin-bottom: 18px;
 }
 
 .footer__policies_list_item:hover {
@@ -84,7 +80,7 @@
   }
 
   .footer__socials {
-    padding-bottom: 6px;
+    padding-bottom: 5px;
   }
 
   .footer__socials_icons {
@@ -116,6 +112,7 @@
 
   .footer__logo {
     padding-top: 0;
+    margin-top: -3px;
   }
 }
 

@@ -1,25 +1,14 @@
 import React from "react";
-import styles from "./button.module.css";
+import styles from "./Button.module.css";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
 const Button = (props) => {
-  const { children, modify, onClick, disable } = props;
-
-  const btnModify = modify ?? false;
-  const btnUnique = "btn-" + modify;
+  const { children, className, onClick, disable } = props;
 
   return (
-    <button
-      className={cx({
-        btn: true,
-        "btn-default": !btnModify,
-        [btnUnique]: btnModify,
-      })}
-      onClick={onClick}
-      disabled={disable}
-    >
+    <button className={cx(styles.btn, className)} onClick={onClick} disabled={disable}>
       {children}
     </button>
   );

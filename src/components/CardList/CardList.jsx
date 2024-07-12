@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./cardList.module.css";
+import styles from "./CardList.module.css";
 
 import Card from "../Card/Card";
 import classNames from "classnames/bind";
@@ -8,41 +8,34 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 const CardList = (props) => {
-  const { data, activeType } = props;
+  const { data, view, tabActive } = props;
 
-  if (data.length === 0) {
+  const isViewRow = !Array.isArray(view) && view === "row";
+
+  if (Array.isArray(data) && data.length === 0) {
     return;
   }
 
   return (
-    <div
-      className={cx({
-        list: true,
-        "list-full": activeType === "promotions",
+    <div className={cx(styles.list, { row: isViewRow })}>
+      {data.map((item) => {
+        return (
+          <Link
+            className={styles.item}
+            to={`/${tabActive}/${item.id}`}
+            key={item.id}
+          >
+            <Card
+              idx={item.id}
+              view={view}
+              date={item.pubDate}
+              title={item.title}
+              image={item.image ?? item.link}
+              text={item.previewtext}
+            />
+          </Link>
+        );
       })}
-    >
-      {Array.isArray(data) &&
-        data.map((item) => {
-          return (
-            <Link
-              className={cx({
-                list__item: true,
-                "list__item-full": activeType === "promotions",
-              })}
-              to={`/${activeType}/${item.id}`}
-              key={item.id}
-            >
-              <Card
-                idx={item.id}
-                type={activeType}
-                date={item.pubDate}
-                title={item.title}
-                image={item.image ?? item.link}
-                text={item.previewtext}
-              />
-            </Link>
-          );
-        })}
     </div>
   );
 };

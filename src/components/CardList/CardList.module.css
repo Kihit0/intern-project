@@ -1,0 +1,43 @@
+.item {
+  display: block; 
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+  }
+
+  .item:nth-child(3n) {
+    grid-column: 1 / -1;
+    margin-inline: 0;
+  }
+
+  .row {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .item:nth-child(3n) {
+    grid-column: 1 / -2;
+  }
+
+  .item:nth-child(9n) {
+    grid-column: 2 / -1;
+  }
+
+  .item:nth-child(3) {
+    grid-row: 2;
+  }
+
+  .row {
+    display: block;
+  }   
+}
