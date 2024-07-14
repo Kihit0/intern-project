@@ -16,6 +16,14 @@ const CardList = (props) => {
     return;
   }
 
+  const getViews = (id) => {
+    return {
+      isViewBackground: Array.isArray(view) && view.indexOf("background") !== -1 && id % 3 === 0,
+      isViewRow: typeof view === "string" && view === "row",
+      isViewRowReverse: view === "row" && id % 2 === 0
+    }
+  }
+
   return (
     <div className={cx(styles.list, { row: isViewRow })}>
       {data.map((item) => {
@@ -27,11 +35,12 @@ const CardList = (props) => {
           >
             <Card
               idx={item.id}
-              view={view}
+              view={getViews(item.id)}
               date={item.pubDate}
               title={item.title}
               image={item.image ?? item.link}
               text={item.previewtext}
+              stats={item.stats}
             />
           </Link>
         );

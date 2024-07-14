@@ -1,7 +1,7 @@
 import React from "react";
 
-const Star = (props) => {
-  const { fill, stroke } = props;
+const StarIcon = (props) => {
+  const { fill = "none", stroke = "var(--color-cornflower-blue)" } = props;
 
   return (
     <svg
@@ -21,4 +21,4 @@ const Star = (props) => {
   );
 };
 
-export default Star;
+export default StarIcon;

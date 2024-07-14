@@ -1,7 +1,7 @@
 import React from "react";
 
 const CommentIcon = (props) => {
-  const { fill, stroke } = props;
+  const { fill = "none", stroke = "var(--color-regent-gray)" } = props;
 
   return (
     <svg

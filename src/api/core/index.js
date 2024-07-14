@@ -17,11 +17,10 @@ class Api {
       }
 
       const data = await response.json();
-      const result = Object.assign({ total: data.length }, { data });
 
-      return result;
+      return Object.assign({ total: data.length }, { data });
     } catch (err) {
-      console.log("Err: " + err.message);
+      console.error("Err: " + err.message);
     }
   }
 }

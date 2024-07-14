@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import shave from "shave";
 
 import styles from "./Card.module.css";
@@ -8,7 +8,7 @@ import LikeIcon from "../Icons/LikeIcon";
 import CommentIcon from "../Icons/CommentIcon";
 import ViewIcon from "../Icons/ViewIcon";
 import Stats from "../Stats/Stats";
-import FavoriteIcon from "../FavoriteIcon/FavoriteIcon";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import DateInfo from "../DateInfo/DateInfo";
 
 const cx = classNames.bind(styles);
@@ -16,59 +16,49 @@ const cx = classNames.bind(styles);
 const IMAGE_DEFAULT = "src/assets/images/default-card-header.jpg";
 
 const Card = (props) => {
-  const [width, setWidth] = useState(window.innerWidth);
-  const { idx, image, date, title, text, view } = props;
+  const [availableHeight, setAvailableHeight] = useState(window.innerWidth);
 
-  const isViewBackground =
-    Array.isArray(view) && view.indexOf("background") !== -1 && idx % 3 === 0;
-  const isViewRow = typeof view === "string" && view === "row";
-  const isViewRowReverse = isViewRow && idx % 2 === 0;
+  const containerRef = useRef(null);
+  const titleRef = useRef(null);
+  const footerRef = useRef(null);
+
+  const { image, date, title, text, view, stats } = props;
+
+  const { isViewBackground, isViewRow, isViewRowReverse } = view;
 
   const colorIcons = isViewBackground ? "var(--color-white)" : null;
 
-  const getIcons = () => {
-    const iconItem = [
-      {
-        icon: <LikeIcon fill={colorIcons} stroke={colorIcons} />,
-        count: 123,
-      },
-      {
-        icon: <CommentIcon stroke={colorIcons} />,
-        count: 76,
-      },
-      {
-        icon: <ViewIcon color={colorIcons} />,
-        count: 225,
-      },
-    ];
+  const getModifyStats = () => {
+    const icons = {
+      likes: <LikeIcon fill={colorIcons} stroke={colorIcons} />,
+      comments: <CommentIcon stroke={colorIcons} />,
+      views: <ViewIcon color={colorIcons} />,
+    };
 
-    if (isViewRow) {
-      return iconItem.filter((item) => item.icon.type.name !== "CommentIcon");
-    }
-
-    return iconItem;
+    return Object.keys(stats).map((item) =>
+      Object.assign({ count: stats[item] }, { icon: icons[item] })
+    );
   };
 
   useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
+    const updateHeight = () => {
+      if (titleRef.current && footerRef.current && containerRef.current) {
+        const th = titleRef.current.clientHeight;
+        const fh = footerRef.current.clientHeight;
+        const ch = containerRef.current.clientHeight;
+        console.log(containerRef.current.clientHeight, th, fh);
+
+        shave(styles.content__text, ch - 40 - th - fh - 20, {character: "..."});
+      }
     };
 
-    window.addEventListener("resize", handleResize);
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", updateHeight);
     };
   }, []);
-
-  useEffect(() => {
-    shave(`.${styles.content__text}`, 70, { character: "..." });
-
-    if (window.innerWidth < 768) {
-      shave(`.${styles["content__text-background"]}`, 50, {
-        character: "...",
-      });
-    }
-  }, [width]);
 
   return (
     <div className={cx(styles.card, { "card-row": isViewRow })}>
@@ -91,9 +81,9 @@ const Card = (props) => {
               "img-background": isViewBackground,
             })}
             src={image ?? IMAGE_DEFAULT}
-            alt="Заголовок карточки"
+            alt={title}
           />
-          <FavoriteIcon
+          <FavoriteButton
             className={cx(styles.favorite, {
               "favorite-background": isViewBackground,
               "favorite-row": isViewRow,
@@ -107,12 +97,14 @@ const Card = (props) => {
             "content-background": isViewBackground,
             "content-row": isViewRow,
           })}
+          ref={containerRef}
         >
           <div className={styles.content__wrapper}>
             <div
               className={cx(styles.content__wrapper__title, {
                 "content__wrapper_title-background": isViewBackground,
               })}
+              ref={titleRef}
             >
               <h3 className={styles.content__title}>{title}</h3>
             </div>
@@ -135,6 +127,7 @@ const Card = (props) => {
             className={cx(styles.footer, {
               "footer-background": isViewBackground,
             })}
+            ref={footerRef}
           >
             <div className={styles.footer__date}>
               <DateInfo
@@ -148,7 +141,7 @@ const Card = (props) => {
               </DateInfo>
             </div>
             <div className={styles.footer__icons}>
-              <Stats icons={getIcons()} />
+              <Stats stats={getModifyStats()} />
             </div>
           </div>
         </div>

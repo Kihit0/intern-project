@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./Stats.module.css";
 
 const Stats = (props) => {
-  const { icons } = props;
+  const { stats } = props;
 
   return (
-    <div className={styles.icons}>
-      {icons.map((item, index) => {
+    <div className={styles.stats}>
+      {stats.map((item, index) => {
         return (
           <div className={styles.icons__item} key={index}>
             {item.icon}

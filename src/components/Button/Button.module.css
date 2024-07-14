@@ -9,12 +9,10 @@
   color: var(--color-white);
 
   cursor: pointer;
-  background-color: inherit;
-  border: none;
-  border-radius: var(--border-radius-small);
 
   background-color: var(--color-royal-blue);
   border: var(--border-solid-small) #4077d6;
+  border-radius: var(--border-radius-small);
 }
 
 .btn:disabled {

@@ -7,7 +7,7 @@ import Loader from "../components/Loader/Loader";
 import Tabs from "../components/Tabs/Tabs";
 import CardList from "../components/CardList/CardList";
 
-import { getManyItem } from "../api/endpoint";
+import { getManyItems } from "../api/endpoint";
 
 const tabsData = [
   {
@@ -60,7 +60,11 @@ const Main = () => {
   };
 
   useEffect(() => {
-    getManyItem(activeTab).then((item) => {
+    getManyItems(activeTab).then((item) => {
+      item.data.forEach((item) =>
+        Object.assign(item, { stats: { likes: 123, comments: 67, views: 85 } })
+      );
+
       setData((value) =>
         value.concat(
           item.data.slice(pagination, pagination + getTabData().stepPagination)

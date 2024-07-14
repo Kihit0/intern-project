@@ -4,7 +4,7 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-const Links = (props) => {
+const Tabs = (props) => {
   const { onClick, tabs } = props;
 
   return (
@@ -24,4 +24,4 @@ const Links = (props) => {
   );
 };
 
-export default Links;
+export default Tabs;

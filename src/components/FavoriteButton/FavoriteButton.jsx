@@ -1,26 +1,26 @@
 import React, { useState } from "react";
-import styles from "./FavoriteIcon.module.css";
+import styles from "./FavoriteButton.module.css";
 import StarIcon from "../Icons/StarIcon";
 
-const FavoriteIcon = (props) => {
-  const [fill, setFill] = useState(null);
+const FavoriteButton = (props) => {
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const { color, className } = props;
-  const stroke = color ?? "var(--color-cornflower-blue)";
+  const colorIcons = color ?? "var(--color-cornflower-blue)";
 
   const onClickAddFavorite = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    setFill((value) => (value === null ? stroke : null));
+    setIsFavorite(!isFavorite);
   };
 
   return (
     <div className={className} onClick={(e) => onClickAddFavorite(e)}>
       <div className={styles.icon}>
-        <StarIcon stroke={stroke} fill={fill} />
+        <StarIcon stroke={colorIcons} fill={isFavorite ? colorIcons : "none"} />
       </div>
     </div>
   );
 };
 
-export default FavoriteIcon;
+export default FavoriteButton;

@@ -75,7 +75,6 @@
 
 .content__wrapper_text {
   height: 100%;
-  max-height: 68px;
 }
 
 .content__title {
@@ -150,10 +149,6 @@
 .content__text-background,
 .footer-background {
   color: var(--color-white);
-}
-
-.content__text-background {
-  max-height: 50px;
 }
 
 .content__wrapper_title-background {

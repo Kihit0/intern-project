@@ -1,4 +1,4 @@
-.icons {
+.stats {
   display: flex;
 }
 
@@ -19,8 +19,4 @@
 
 .icons__item_count:last-child {
   margin-left: 7px;
-}
-
-.icons__item-without-comment:nth-child(2) {
-  display: none;
 }

@@ -5,10 +5,10 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 const Button = (props) => {
-  const { children, className, onClick, disable } = props;
+  const { children, className, onClick, isDisable } = props;
 
   return (
-    <button className={cx(styles.btn, className)} onClick={onClick} disabled={disable}>
+    <button className={cx(styles.btn, className)} onClick={onClick} disabled={isDisable}>
       {children}
     </button>
   );

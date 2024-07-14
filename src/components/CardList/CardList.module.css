@@ -23,6 +23,7 @@
 @media screen and (min-width: 1280px) {
   .list {
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense;
   }
 
   .item:nth-child(3n) {
@@ -33,8 +34,8 @@
     grid-column: 2 / -1;
   }
 
-  .item:nth-child(3) {
-    grid-row: 2;
+  .item:nth-child(9n + 3) {
+    grid-row: auto;
   }
 
   .row {
