@@ -1,5 +1,10 @@
+.links {
+  padding-bottom: 9px;
+  border-bottom: var(--border-solid-small) var(--color-cornflower-blue);
+}
+
 .links__item {
-  padding: 0 6px 7px 5px;
+  padding: 0 6px 6px 5px;
   margin-right: 25px;
 
   cursor: pointer;

@@ -53,6 +53,7 @@
 
   cursor: pointer;
   background-color: var(--color-white);
+  border: none;
   border-bottom-left-radius: var(--border-radius-small);
 }
 
@@ -90,6 +91,8 @@
 
 .content__text {
   overflow: hidden;
+
+  padding-bottom: 20px;
 
   line-height: 22.5px;
 }
@@ -177,7 +180,12 @@
     width: 70%;
     min-height: auto;
   }
-  /* VIEW ROW */
+
+  .content__text {
+    padding-bottom: 10px;
+  }
+  
+  /* ВИД СТРОКИ */
   .card-row {
     height: 206px;
   }

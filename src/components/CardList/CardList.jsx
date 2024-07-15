@@ -8,11 +8,12 @@ import { getManyItems } from "../../api/endpoint";
 const cx = classNames.bind(styles);
 
 const CardList = (props) => {
-  const { activeTab, pagination, isLoading, onIsLoading, onIsShowButton } =
-    props;
+  const { activeTab, isLoading, onIsLoading, onIsShowButton } = props;
 
   const { view, stepPagination, endpoint } = activeTab;
+
   const [data, setData] = useState([]);
+  const [pagination, setPagination] = useState(0);
 
   const getViews = (id) => {
     const isViewBackground =
@@ -28,47 +29,74 @@ const CardList = (props) => {
     };
   };
 
-  useEffect(() => {
-    getManyItems(endpoint).then((item) => {
-      item.data.forEach((item) =>
-        Object.assign(item, { stats: { likes: 123, comments: 67, views: 85 } })
-      );
-
-      const paginationData = item.data.slice(
-        pagination,
-        pagination + stepPagination
-      );
-
-      setData((value) => {
-        if (value.length > 1 && pagination === 0) {
-          value = [];
+  const handleClickToggleFavorite = (id) => {
+    setData((value) =>
+      value.map((item) => {
+        if (item.id === id) {
+          item.isFavorite = !item.isFavorite;
+          return item;
         }
 
-        return value.concat(paginationData);
-      });
+        return item;
+      })
+    );
+  };
 
-      onIsLoading(false);
-      onIsShowButton(item.total > data.length + stepPagination);
-    });
-  }, [activeTab, pagination, isLoading]);
+  const setItemsData = () => {
+    if (isLoading) {
+      getManyItems(endpoint).then((item) => {
+        if (activeTab.endpoint === "news") {
+          item.data.forEach((item) =>
+            Object.assign(item, {
+              stats: { likes: 125, comments: 55, views: 300 },
+              isFavorite: false,
+            })
+          );
+        } else {
+          item.data.forEach((item) =>
+            Object.assign(item, {
+              stats: { likes: 125, views: 300 },
+              isFavorite: false,
+              endDate: "1312312",
+            })
+          );
+        }
+
+        const paginationData = item.data.slice(
+          pagination,
+          pagination + stepPagination
+        );
+
+        setData((value) => {
+          if (value.length > 1 && pagination === 0) {
+            value = [];
+          }
+
+          return value.concat(paginationData);
+        });
+
+        onIsLoading(false);
+        onIsShowButton(item.total > data.length + stepPagination);
+        setPagination((value) => value + stepPagination);
+      });
+    }
+  };
+
+  useEffect(() => {
+    setItemsData();
+  }, [activeTab, isLoading]);
 
   return (
     <div className={cx(styles.list, { row: getViews().isViewRow })}>
-      {data.map((item) => {
+      {data.map((item, index) => {
         return (
-          <div
-            className={styles.item}
-            key={item.id}
-          >
+          <div className={styles.item} key={item.id}>
             <Card
-              idx={item.id}
+              idx={index}
               view={getViews(item.id)}
-              date={item.pubDate}
-              title={item.title}
-              image={item.image ?? item.link}
-              text={item.previewtext}
-              stats={item.stats}
+              data={item}
               url={`/${endpoint}/${item.id}`}
+              onAddFavorite={handleClickToggleFavorite}
             />
           </div>
         );

@@ -10,7 +10,7 @@ const Stats = (props) => {
         return (
           <div className={styles.icons__item} key={index}>
             {item.icon}
-            <span className={styles.icons__item_count}>{item.count}</span>
+            <span className={styles.icons__item_count}>{item.counts}</span>
           </div>
         );
       })}

@@ -7,7 +7,7 @@ import Loader from "../components/Loader/Loader";
 import Tabs from "../components/Tabs/Tabs";
 import CardList from "../components/CardList/CardList";
 
-const tabsData = [
+const TABS_DATA = [
   {
     name: "Новости",
     view: ["default", "background"],
@@ -23,25 +23,11 @@ const tabsData = [
 ];
 
 const Main = () => {
-  const [activeTab, setActiveTab] = useState(tabsData[0]);
-  const [pagination, setPagination] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isShowButton, setIsShowButton] = useState(true);
 
-  const handleClickTabActive = (tab) => {
-    const { name } = tab;
-
-    if (name !== activeTab.name) {
-      setActiveTab(tab);
-      setPagination(0);
-    }
-  };
-
-  const handleClickAddData = () => {
-    if (!isLoading) {
-      setIsLoading(true);
-      setPagination(pagination + activeTab.stepPagination);
-    }
+  const handleClickLoadingData = () => {
+    setIsLoading(true);
   };
 
   return (
@@ -67,22 +53,23 @@ const Main = () => {
       </div>
       <div className={styles.main__tabs}>
         <div className={styles.main__tabs_wrapper}>
-          <Tabs
-            onClick={handleClickTabActive}
-            tabs={tabsData}
-            activeTab={activeTab}
-          />
+          <Tabs tabs={TABS_DATA} onClick={handleClickLoadingData}>
+            {TABS_DATA.map((item, idx) => {
+              return (
+                <div className={styles.main__content} key={idx}>
+                  <CardList
+                    isLoading={isLoading}
+                    activeTab={item}
+                    onIsLoading={setIsLoading}
+                    onIsShowButton={setIsShowButton}
+                  />
+                </div>
+              );
+            })}
+          </Tabs>
         </div>
       </div>
-      <div className={styles.main__content}>
-        <CardList
-          isLoading
-          activeTab={activeTab}
-          pagination={pagination}
-          onIsLoading={setIsLoading}
-          onIsShowButton={setIsShowButton}
-        />
-      </div>
+
       {isLoading && (
         <div className={styles.main__loader}>
           <Loader />
@@ -91,7 +78,7 @@ const Main = () => {
       {isShowButton && (
         <div className={styles.main__wrapper_btn}>
           <div className={styles.main__btn}>
-            <Button onClick={handleClickAddData} isDisabled={isLoading}>
+            <Button onClick={handleClickLoadingData} isDisabled={isLoading}>
               Смотреть еще
             </Button>
           </div>

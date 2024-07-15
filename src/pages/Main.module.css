@@ -4,10 +4,9 @@
 
 .main__tabs_wrapper {
   display: flex;
+  flex-direction: column;
 
   margin-top: -1px;
-
-  border-bottom: var(--border-solid-small) var(--color-cornflower-blue);
 }
 
 .main__content {

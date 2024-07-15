@@ -21,30 +21,35 @@ const Card = (props) => {
   const titleRef = useRef(null);
   const footerRef = useRef(null);
 
-  const { image, date, title, text, view, stats, url } = props;
+  const { data, view, url, onAddFavorite } = props;
+
+  const {
+    id,
+    pubDate,
+    title,
+    previewtext,
+    stats,
+    isFavorite,
+    image,
+    link,
+    endDate,
+  } = data;
 
   const { isViewBackground, isViewRow, isViewRowReverse } = view;
 
-  const colorIcons = isViewBackground ? "var(--color-white)" : null;
+  const colorIcons = isViewBackground ? "var(--color-white)" : undefined;
 
   const getModifyStats = () => {
     const icons = {
-      likes: colorIcons ? (
-        <LikeIcon fill={colorIcons} stroke={colorIcons} />
-      ) : (
-        <LikeIcon />
-      ),
-      comments: colorIcons ? (
-        <CommentIcon stroke={colorIcons} />
-      ) : (
-        <CommentIcon />
-      ),
-      views: colorIcons ? <ViewIcon color={colorIcons} /> : <ViewIcon />,
+      likes: <LikeIcon fill={colorIcons} stroke={colorIcons} />,
+      comments: <CommentIcon stroke={colorIcons} />,
+      views: <ViewIcon color={colorIcons} />,
     };
 
-    return Object.keys(stats).map((item) =>
-      Object.assign({ count: stats[item] }, { icon: icons[item] })
-    );
+    return Object.keys(stats).map((item) => ({
+      counts: stats[item],
+      icon: icons[item],
+    }));
   };
 
   useEffect(() => {
@@ -89,7 +94,7 @@ const Card = (props) => {
               className={cx(styles.img, {
                 "img-background": isViewBackground,
               })}
-              src={image ?? IMAGE_DEFAULT}
+              src={(image || link) ?? IMAGE_DEFAULT}
               alt={title}
             />
           </Link>
@@ -99,7 +104,9 @@ const Card = (props) => {
               "favorite-row": isViewRow,
               "favorite-row-reverse": isViewRowReverse,
             })}
-            color={isViewBackground ? "var(--color-white)" : null}
+            color={isViewBackground ? "var(--color-white)" : undefined}
+            isFavorite={isFavorite}
+            onClick={() => onAddFavorite(id)}
           />
         </div>
         <Link
@@ -114,9 +121,10 @@ const Card = (props) => {
               className={cx(styles.content__wrapper_title, {
                 "content__wrapper_title-background": isViewBackground,
               })}
-              ref={titleRef}
             >
-              <h3 className={styles.content__title}>{title}</h3>
+              <h3 className={styles.content__title} ref={titleRef}>
+                {title}
+              </h3>
             </div>
             <div
               className={cx(styles.content__wrapper_text, {
@@ -129,7 +137,7 @@ const Card = (props) => {
                   "content__text-background": isViewBackground,
                 })}
               >
-                {text}
+                {previewtext}
               </p>
             </div>
           </div>
@@ -141,13 +149,13 @@ const Card = (props) => {
           >
             <div className={styles.footer__date}>
               <DateInfo
-                date={date}
+                date={pubDate}
                 isViewInfo={isViewRow}
                 className={cx(styles.footer__date_text, {
                   "footer__date_text-row": isViewRow,
                 })}
               >
-                Предложение активно
+                {pubDate > endDate ? "Предложение активно" : "Завершено"}
               </DateInfo>
             </div>
             <div className={styles.footer__icons}>

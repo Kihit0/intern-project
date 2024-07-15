@@ -20,11 +20,14 @@
 }
 
 .container {
-  max-width: 1240px;
   width: 100%;
 
   margin: 0 auto;
   padding: 0 20px;
+}
+
+.container-app {
+  max-width: var(--breakpoint-mobile-min);
 }
 
 .content {
@@ -42,6 +45,10 @@
     margin-top: var(--header-height-desktop);
   }
 
+  .container-app {
+    max-width: 768px;
+  }
+
   .app {
     padding: 17px 0 50px;
   }
@@ -49,8 +56,12 @@
 
 @media screen and (min-width: 1280px) {
   .container {
-    width: 1440px;
+    max-width: 1280px;
     padding: 0;
+  }
+
+  .container-app {
+    max-width: 1280px;
   }
 
   .content {
