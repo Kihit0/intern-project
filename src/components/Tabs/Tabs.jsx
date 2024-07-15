@@ -5,14 +5,9 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 const Tabs = (props) => {
-  const { children, tabs, onClick } = props;
+  const { children, tabs } = props;
 
   const [activeTab, setActiveTab] = useState(0);
-
-  const handleClickTabActive = (idx) => {
-    onClick();
-    setActiveTab(idx);
-  };
 
   return (
     <>
@@ -25,7 +20,7 @@ const Tabs = (props) => {
               className={cx(styles.links__item, {
                 "links__item-active": idx === activeTab,
               })}
-              onClick={() => handleClickTabActive(idx)}
+              onClick={() => setActiveTab(idx)}
               key={idx}
             >
               {name}

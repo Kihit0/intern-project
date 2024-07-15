@@ -13,15 +13,6 @@
   padding-top: 26px;
 }
 
-.main__loader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-
-  margin-bottom: 20px;
-}
-
 .accent {
   color: var(--color-cornflower-blue);
 }
@@ -33,18 +24,6 @@
 @media screen and (min-width: 768px) {
   .main__title {
     margin-bottom: 9px;
-  }
-
-  .main__wrapper_btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-  }
-
-  .main__btn {
-    width: 155px;
   }
 }
 

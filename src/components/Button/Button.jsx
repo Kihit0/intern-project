@@ -8,7 +8,12 @@ const Button = (props) => {
   const { children, className, onClick, isDisabled } = props;
 
   return (
-    <button className={cx(styles.btn, className)} onClick={onClick} disabled={isDisabled}>
+    <button
+      className={cx(styles.btn, className)}
+      type="button"
+      onClick={onClick}
+      disabled={isDisabled}
+    >
       {children}
     </button>
   );

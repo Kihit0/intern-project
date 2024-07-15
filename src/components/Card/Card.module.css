@@ -92,7 +92,7 @@
 .content__text {
   overflow: hidden;
 
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 
   line-height: 22.5px;
 }
@@ -158,6 +158,10 @@
   padding: 14px 0 9px;
 }
 
+.content__text-background {
+  padding-bottom: 16px;
+}
+
 .footer-background {
   position: relative;
   z-index: 20;
@@ -166,6 +170,8 @@
 .content-row {
   height: calc(100% - 159px);
 }
+
+
 
 @media screen and (min-width: 768px) {
   .wrapper__img {
