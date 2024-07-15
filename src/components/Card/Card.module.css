@@ -184,7 +184,7 @@
   .content__text {
     padding-bottom: 10px;
   }
-  
+
   /* ВИД СТРОКИ */
   .card-row {
     height: 206px;
@@ -257,7 +257,7 @@
   }
 
   .content__wrapper_text-row,
-  .content__wrapper_title-row{
+  .content__wrapper_title-row {
     width: 610px;
   }
 
