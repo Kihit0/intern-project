@@ -8,14 +8,12 @@ const FavoriteButton = (props) => {
   const { color, className } = props;
   const colorIcons = color ?? "var(--color-cornflower-blue)";
 
-  const onClickAddFavorite = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
+  const onClickAddFavorite = () => {
     setIsFavorite(!isFavorite);
   };
 
   return (
-    <div className={className} onClick={(e) => onClickAddFavorite(e)}>
+    <div className={className} onClick={onClickAddFavorite}>
       <div className={styles.icon}>
         <StarIcon stroke={colorIcons} fill={isFavorite ? colorIcons : "none"} />
       </div>

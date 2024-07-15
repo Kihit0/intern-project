@@ -1,10 +1,9 @@
 import React from "react";
-import styles from "./app.module.css";
 import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
-    <div className={styles.app}>
+    <div className='app'>
       <Outlet />
     </div>
   );

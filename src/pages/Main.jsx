@@ -7,73 +7,42 @@ import Loader from "../components/Loader/Loader";
 import Tabs from "../components/Tabs/Tabs";
 import CardList from "../components/CardList/CardList";
 
-import { getManyItems } from "../api/endpoint";
-
 const tabsData = [
   {
-    name: ["news", "Новости"],
-    active: true,
+    name: "Новости",
     view: ["default", "background"],
+    endpoint: "news",
     stepPagination: 5,
   },
   {
-    name: ["promotions", "Акции"],
-    active: false,
+    name: "Акции",
     view: "row",
+    endpoint: "promotions",
     stepPagination: 3,
   },
 ];
 
 const Main = () => {
-  const [activeTab, setActiveTab] = useState("news");
+  const [activeTab, setActiveTab] = useState(tabsData[0]);
   const [pagination, setPagination] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [totalData, setTotalData] = useState(null);
-  const [data, setData] = useState([]);
-
-  const getTabData = () => {
-    return tabsData.find((item) => item.name.indexOf(activeTab) !== -1);
-  };
+  const [isShowButton, setIsShowButton] = useState(true);
 
   const handleClickTabActive = (tab) => {
-    if (tab !== activeTab) {
-      setActiveTab(tab);
-      setTotalData(0);
-      setPagination(0);
-      setData([]);
+    const { name } = tab;
 
-      tabsData.forEach((item) => {
-        if (item.name.indexOf(tab) !== -1) {
-          item.active = true;
-        } else {
-          item.active = false;
-        }
-      });
+    if (name !== activeTab.name) {
+      setActiveTab(tab);
+      setPagination(0);
     }
   };
 
   const handleClickAddData = () => {
     if (!isLoading) {
       setIsLoading(true);
-      setPagination((value) => value + getTabData().stepPagination);
+      setPagination(pagination + activeTab.stepPagination);
     }
   };
-
-  useEffect(() => {
-    getManyItems(activeTab).then((item) => {
-      item.data.forEach((item) =>
-        Object.assign(item, { stats: { likes: 123, comments: 67, views: 85 } })
-      );
-
-      setData((value) =>
-        value.concat(
-          item.data.slice(pagination, pagination + getTabData().stepPagination)
-        )
-      );
-      setTotalData(item.total);
-      setIsLoading(false);
-    });
-  }, [activeTab, pagination]);
 
   return (
     <div>
@@ -98,21 +67,31 @@ const Main = () => {
       </div>
       <div className={styles.main__tabs}>
         <div className={styles.main__tabs_wrapper}>
-          <Tabs onClick={handleClickTabActive} tabs={tabsData} />
+          <Tabs
+            onClick={handleClickTabActive}
+            tabs={tabsData}
+            activeTab={activeTab}
+          />
         </div>
       </div>
       <div className={styles.main__content}>
-        <CardList data={data} view={getTabData().view} tabActive={activeTab} />
+        <CardList
+          isLoading
+          activeTab={activeTab}
+          pagination={pagination}
+          onIsLoading={setIsLoading}
+          onIsShowButton={setIsShowButton}
+        />
       </div>
       {isLoading && (
         <div className={styles.main__loader}>
           <Loader />
         </div>
       )}
-      {totalData && totalData !== data.length && (
+      {isShowButton && (
         <div className={styles.main__wrapper_btn}>
           <div className={styles.main__btn}>
-            <Button onClick={handleClickAddData} disabled={isLoading}>
+            <Button onClick={handleClickAddData} isDisabled={isLoading}>
               Смотреть еще
             </Button>
           </div>

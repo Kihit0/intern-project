@@ -1,36 +1,63 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import styles from "./CardList.module.css";
 
 import Card from "../Card/Card";
 import classNames from "classnames/bind";
+import { getManyItems } from "../../api/endpoint";
 
 const cx = classNames.bind(styles);
 
 const CardList = (props) => {
-  const { data, view, tabActive } = props;
+  const { activeTab, pagination, isLoading, onIsLoading, onIsShowButton } =
+    props;
 
-  const isViewRow = !Array.isArray(view) && view === "row";
-
-  if (Array.isArray(data) && data.length === 0) {
-    return;
-  }
+  const { view, stepPagination, endpoint } = activeTab;
+  const [data, setData] = useState([]);
 
   const getViews = (id) => {
+    const isViewBackground =
+      Array.isArray(view) &&
+      view.indexOf("background") !== -1 &&
+      id &&
+      id % 3 === 0;
+
     return {
-      isViewBackground: Array.isArray(view) && view.indexOf("background") !== -1 && id % 3 === 0,
+      isViewBackground,
       isViewRow: typeof view === "string" && view === "row",
-      isViewRowReverse: view === "row" && id % 2 === 0
-    }
-  }
+      isViewRowReverse: view === "row" && id && id % 2 === 0,
+    };
+  };
+
+  useEffect(() => {
+    getManyItems(endpoint).then((item) => {
+      item.data.forEach((item) =>
+        Object.assign(item, { stats: { likes: 123, comments: 67, views: 85 } })
+      );
+
+      const paginationData = item.data.slice(
+        pagination,
+        pagination + stepPagination
+      );
+
+      setData((value) => {
+        if (value.length > 1 && pagination === 0) {
+          value = [];
+        }
+
+        return value.concat(paginationData);
+      });
+
+      onIsLoading(false);
+      onIsShowButton(item.total > data.length + stepPagination);
+    });
+  }, [activeTab, pagination, isLoading]);
 
   return (
-    <div className={cx(styles.list, { row: isViewRow })}>
+    <div className={cx(styles.list, { row: getViews().isViewRow })}>
       {data.map((item) => {
         return (
-          <Link
+          <div
             className={styles.item}
-            to={`/${tabActive}/${item.id}`}
             key={item.id}
           >
             <Card
@@ -41,8 +68,9 @@ const CardList = (props) => {
               image={item.image ?? item.link}
               text={item.previewtext}
               stats={item.stats}
+              url={`/${endpoint}/${item.id}`}
             />
-          </Link>
+          </div>
         );
       })}
     </div>

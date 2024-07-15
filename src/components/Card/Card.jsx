@@ -10,19 +10,18 @@ import ViewIcon from "../Icons/ViewIcon";
 import Stats from "../Stats/Stats";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import DateInfo from "../DateInfo/DateInfo";
+import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
 const IMAGE_DEFAULT = "src/assets/images/default-card-header.jpg";
 
 const Card = (props) => {
-  const [availableHeight, setAvailableHeight] = useState(window.innerWidth);
-
   const containerRef = useRef(null);
   const titleRef = useRef(null);
   const footerRef = useRef(null);
 
-  const { image, date, title, text, view, stats } = props;
+  const { image, date, title, text, view, stats, url } = props;
 
   const { isViewBackground, isViewRow, isViewRowReverse } = view;
 
@@ -30,9 +29,17 @@ const Card = (props) => {
 
   const getModifyStats = () => {
     const icons = {
-      likes: <LikeIcon fill={colorIcons} stroke={colorIcons} />,
-      comments: <CommentIcon stroke={colorIcons} />,
-      views: <ViewIcon color={colorIcons} />,
+      likes: colorIcons ? (
+        <LikeIcon fill={colorIcons} stroke={colorIcons} />
+      ) : (
+        <LikeIcon />
+      ),
+      comments: colorIcons ? (
+        <CommentIcon stroke={colorIcons} />
+      ) : (
+        <CommentIcon />
+      ),
+      views: colorIcons ? <ViewIcon color={colorIcons} /> : <ViewIcon />,
     };
 
     return Object.keys(stats).map((item) =>
@@ -43,12 +50,13 @@ const Card = (props) => {
   useEffect(() => {
     const updateHeight = () => {
       if (titleRef.current && footerRef.current && containerRef.current) {
-        const th = titleRef.current.clientHeight;
-        const fh = footerRef.current.clientHeight;
-        const ch = containerRef.current.clientHeight;
-        console.log(containerRef.current.clientHeight, th, fh);
+        const titleHeight = titleRef.current.clientHeight;
+        const footerHeight = footerRef.current.clientHeight;
+        const containerHeight = containerRef.current.clientHeight;
 
-        shave(styles.content__text, ch - 40 - th - fh - 20, {character: "..."});
+        const maxHeight = containerHeight - titleHeight - footerHeight;
+
+        shave(`.${styles.content__text}`, maxHeight, { character: "..." });
       }
     };
 
@@ -75,14 +83,16 @@ const Card = (props) => {
             "wrapper__img-row-reverse": isViewRowReverse,
           })}
         >
-          {isViewBackground && <div className={styles.shading}></div>}
-          <img
-            className={cx(styles.img, {
-              "img-background": isViewBackground,
-            })}
-            src={image ?? IMAGE_DEFAULT}
-            alt={title}
-          />
+          <Link to={url}>
+            {isViewBackground && <div className={styles.shading}></div>}
+            <img
+              className={cx(styles.img, {
+                "img-background": isViewBackground,
+              })}
+              src={image ?? IMAGE_DEFAULT}
+              alt={title}
+            />
+          </Link>
           <FavoriteButton
             className={cx(styles.favorite, {
               "favorite-background": isViewBackground,
@@ -92,16 +102,16 @@ const Card = (props) => {
             color={isViewBackground ? "var(--color-white)" : null}
           />
         </div>
-        <div
+        <Link
+          to={url}
           className={cx(styles.content, {
             "content-background": isViewBackground,
             "content-row": isViewRow,
           })}
-          ref={containerRef}
         >
-          <div className={styles.content__wrapper}>
+          <div className={styles.content__wrapper} ref={containerRef}>
             <div
-              className={cx(styles.content__wrapper__title, {
+              className={cx(styles.content__wrapper_title, {
                 "content__wrapper_title-background": isViewBackground,
               })}
               ref={titleRef}
@@ -144,7 +154,7 @@ const Card = (props) => {
               <Stats stats={getModifyStats()} />
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

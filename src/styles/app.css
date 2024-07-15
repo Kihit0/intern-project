@@ -30,12 +30,20 @@
 .content {
   flex: 1 0 auto;
 
-  padding-top: var(--header-height-mobile);
+  margin-top: var(--header-height-mobile);
+}
+
+.app {
+  padding: 11px 0 40px;
 }
 
 @media screen and (min-width: 768px) {
   .content {
-    padding-top: var(--header-height-desktop);
+    margin-top: var(--header-height-desktop);
+  }
+
+  .app {
+    padding: 17px 0 50px;
   }
 }
 
@@ -46,6 +54,10 @@
   }
 
   .content {
-    padding-top: 86px;
+    margin-top: 86px;
+  }
+
+  .app {
+    padding-bottom: 70px;
   }
 }
