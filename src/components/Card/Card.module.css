@@ -256,6 +256,11 @@
     margin-top: 2px;
   }
 
+  .content__wrapper_text-row,
+  .content__wrapper_title-row{
+    width: 610px;
+  }
+
   .wrapper__img-row {
     width: 368px;
   }
