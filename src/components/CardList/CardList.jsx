@@ -92,8 +92,8 @@ const CardList = (props) => {
         return (
           <div className={styles.item} key={item.id}>
             <Card
-              idx={index}
-              view={getViews(item.id)}
+              idx={item.id}
+              view={getViews(index + 1)}
               data={item}
               url={`/${endpoint}/${item.id}`}
               onAddFavorite={handleClickToggleFavorite}
