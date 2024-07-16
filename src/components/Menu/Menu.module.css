@@ -10,15 +10,22 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .item {
-    padding: 19px 29px 22px;
-
+  .nav {
     border: var(--border-solid-small) var(--color-athens-gray);
-    border-bottom: none;
+  }
+
+  .item {
+    padding: 18px 29px 23px;
+
+    border-bottom: var(--border-solid-small) var(--color-athens-gray);
+  }
+
+  .item:nth-child(4) {
+    padding-top: 19px;
   }
 
   .item:last-child {
-    padding-top: 21px;
-    border-bottom: var(--border-solid-small) var(--color-athens-gray);
+    padding-top: 20px;
+    border-bottom: none;
   }
 }

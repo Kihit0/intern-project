@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 const Menu = (props) => {
   const { items } = props;
 
-  const [activeLink, setActiveLink] = useState(0);
+  const [activeItem, setActiveItem] = useState(0);
 
   return (
     <nav className={styles.nav}>
@@ -15,9 +15,9 @@ const Menu = (props) => {
         <div
           className={styles.item}
           key={idx}
-          onClick={() => setActiveLink(idx)}
+          onClick={() => setActiveItem(idx)}
         >
-          <p className={cx({ active: activeLink === idx })}>{item}</p>
+          <p className={cx({ active: activeItem === idx })}>{item}</p>
         </div>
       ))}
     </nav>

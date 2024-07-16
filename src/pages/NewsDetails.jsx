@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from "./News.module.css";
+import styles from "./NewsDetails.module.css";
 
 import TitleBlock from "../components/TitleBlock/TitleBlock";
 import DataInfo from "../components/DateInfo/DateInfo";
-import { useHref, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { getOneItem } from "../api/endpoint";
 import ModalBurger from "../components/ModalBurger/ModalBurger";
 import Menu from "../components/Menu/Menu";
+import classNames from "classnames/bind";
 
 const DEFAULT_IMAGE = "src/assets/images/default-card-header.jpg";
 
@@ -19,62 +20,47 @@ const NAV_ITEMS = [
   "Телефонная книга",
 ];
 
-const body = document.querySelector("body");
-const header = document.getElementById("header");
-const burger = document.getElementById("burger");
+const cx = classNames.bind(styles);
 
-const News = () => {
+const NewsDetails = () => {
   const { id } = useParams();
-  const url = useHref()
-    .split("/")
-    .filter((item) => item)[0];
 
-  const [item, setItems] = useState(null);
-  const [isShowModalBurger, setIsShowModalBurger] = useState(false);
+  const [newsDetailsData, setNewsDetailsData] = useState(null);
+  const [shouldShowModalBurger, setShouldShowModalBurger] = useState(false);
   const [isShowMenu, setIsShowMenu] = useState(false);
-  const newsRef = useRef(null);
 
   const onClose = () => {
-    setIsShowModalBurger(false);
-    body.classList.remove("hidden");
+    setShouldShowModalBurger(false);
+  };
+
+  const onOpen = () => {
+    setShouldShowModalBurger(true);
   };
 
   useEffect(() => {
     const updateHeight = () => {
-      if (newsRef.current && newsRef.current.clientWidth >= 1240) {
-        setIsShowModalBurger(false);
+      if (window.innerWidth >= 1280) {
         setIsShowMenu(true);
-        header.classList.remove("header__with_burger");
       } else {
         setIsShowMenu(false);
-        header.classList.add("header__with_burger");
       }
     };
 
     updateHeight();
-    window.addEventListener("resize", updateHeight);
-    burger.addEventListener("click", () => {
-      body.classList.add("hidden");
-      setIsShowModalBurger(true);
-    });
 
+    window.addEventListener("resize", updateHeight);
     return () => {
-      header.classList.remove("header__with_burger");
-      body.classList.remove("hidden");
       window.removeEventListener("resize", updateHeight);
     };
   }, []);
 
   useEffect(() => {
-    getOneItem(url, { id }).then(({ data }) => setItems(data));
+    getOneItem("news", { id }).then(({ data }) => setNewsDetailsData(data));
   }, []);
 
   return (
-    <div className={styles.news} ref={newsRef}>
+    <div className={styles.news}>
       <div className={styles.wrapper}>
-        {isShowModalBurger && (
-          <ModalBurger linkItems={NAV_ITEMS} onClose={onClose} />
-        )}
         {isShowMenu && (
           <div className={styles.wrapper__menu}>
             <div className={styles.menu}>
@@ -82,33 +68,42 @@ const News = () => {
             </div>
           </div>
         )}
-        {item && (
+        {newsDetailsData && (
           <div className={styles.news__content}>
             <TitleBlock title={<>Новости</>} />
             <div className={styles.content}>
               <div className={styles.date}>
-                <DataInfo date={item.pubDate} formatDate="DD MMM YYYY" />
+                <DataInfo
+                  date={newsDetailsData.pubDate}
+                  formatDate="DD MMM YYYY"
+                />
               </div>
               <div className={styles.title}>
-                <h2>{item.title}</h2>
+                <h2>{newsDetailsData.title}</h2>
               </div>
               <div className={styles.wrapper__img}>
                 <img
                   className={styles.img}
-                  src={(item.image || item.link) ?? DEFAULT_IMAGE}
-                  alt={item.title}
+                  src={
+                    (newsDetailsData.image || newsDetailsData.link) ??
+                    DEFAULT_IMAGE
+                  }
+                  alt={newsDetailsData.title}
                 />
               </div>
               <div
                 className={styles.text}
-                dangerouslySetInnerHTML={{ __html: item.fulltext }}
+                dangerouslySetInnerHTML={{ __html: newsDetailsData.fulltext }}
               ></div>
             </div>
           </div>
         )}
       </div>
+      <div className={cx({ show__modal_burger: !shouldShowModalBurger })}>
+        <ModalBurger linkItems={NAV_ITEMS} onClose={onClose} onOpen={onOpen} />
+      </div>
     </div>
   );
 };
 
-export default News;
+export default NewsDetails;

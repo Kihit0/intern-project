@@ -66,6 +66,13 @@ ol:not([class]) > li:not([class]) {
   padding-left: 20px;
 }
 
+p:not([class]),
+blockquote:not([class]),
+ol:not([class]),
+ul:not([class]) {
+  padding-bottom: 20px;
+}
+
 img {
   width: 100%;
   object-fit: cover;
