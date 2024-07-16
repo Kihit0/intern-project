@@ -17,7 +17,7 @@ const CardList = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isShowButton, setIsShowButton] = useState(true);
 
-  const handleClickLoadingData = () => {
+  const handleClickMoreButton = () => {
     setIsLoading(true);
   };
 
@@ -35,7 +35,7 @@ const CardList = (props) => {
     };
   };
 
-  const onClickToggleFavorite = (id) => {
+  const onClickFavoriteButton = (id) => {
     setData((value) =>
       value.map((item) => {
         if (item.id === id) {
@@ -93,21 +93,18 @@ const CardList = (props) => {
 
   return (
     <div>
-      {" "}
       <div className={cx(styles.list, { row: getViews().isViewRow })}>
-        {data.map((item, index) => {
-          return (
-            <div className={styles.item} key={item.id}>
-              <Card
-                idx={item.id}
-                view={getViews(index + 1)}
-                data={item}
-                url={`/${endpoint}/${item.id}`}
-                onAddFavorite={onClickToggleFavorite}
-              />
-            </div>
-          );
-        })}
+        {data.map((item, index) => (
+          <div className={styles.item} key={item.id}>
+            <Card
+              idx={item.id}
+              view={getViews(index + 1)}
+              data={item}
+              url={`/${endpoint}/${item.id}`}
+              onAddFavorite={onClickFavoriteButton}
+            />
+          </div>
+        ))}
         {isLoading && (
           <div className={styles.loader}>
             <Loader />
@@ -117,7 +114,7 @@ const CardList = (props) => {
       {isShowButton && (
         <div className={styles.list__wrapper_btn}>
           <div className={styles.list__btn}>
-            <Button onClick={handleClickLoadingData} isDisabled={isLoading}>
+            <Button onClick={handleClickMoreButton} isDisabled={isLoading}>
               Смотреть еще
             </Button>
           </div>

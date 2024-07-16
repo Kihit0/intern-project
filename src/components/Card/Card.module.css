@@ -171,8 +171,6 @@
   height: calc(100% - 159px);
 }
 
-
-
 @media screen and (min-width: 768px) {
   .wrapper__img {
     height: 159px;
