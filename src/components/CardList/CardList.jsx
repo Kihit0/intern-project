@@ -15,7 +15,7 @@ const CardList = (props) => {
   const [data, setData] = useState([]);
   const [pagination, setPagination] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [isShowButton, setIsShowButton] = useState(true);
+  const [isMoreButtonShowed, setIsMoreButtonShowed] = useState(true);
 
   const handleClickMoreButton = () => {
     setIsLoading(true);
@@ -81,7 +81,7 @@ const CardList = (props) => {
         });
 
         setIsLoading(false);
-        setIsShowButton(item.total > data.length + stepPagination);
+        setIsMoreButtonShowed(item.total > data.length + stepPagination);
         setPagination((value) => value + stepPagination);
       });
     }
@@ -111,7 +111,7 @@ const CardList = (props) => {
           </div>
         )}
       </div>
-      {isShowButton && (
+      {isMoreButtonShowed && (
         <div className={styles.list__wrapper_btn}>
           <div className={styles.list__btn}>
             <Button onClick={handleClickMoreButton} isDisabled={isLoading}>
