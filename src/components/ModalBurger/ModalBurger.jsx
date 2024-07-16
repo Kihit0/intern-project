@@ -5,7 +5,7 @@ import CloseIcon from "../Icons/CloseIcon";
 import Menu from "../Menu/Menu";
 
 const ModalBurger = (props) => {
-  const { linkItems, onClose, onOpen } = props;
+  const { menuItems, onClose, onOpen } = props;
 
   const body = document.querySelector("body");
   const header = document.getElementById("header");
@@ -56,7 +56,7 @@ const ModalBurger = (props) => {
             </button>
           </div>
           <div className={styles.menu}>
-            <Menu items={linkItems} />
+            <Menu items={menuItems} />
           </div>
         </div>
 

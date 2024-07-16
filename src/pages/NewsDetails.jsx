@@ -100,7 +100,7 @@ const NewsDetails = () => {
         )}
       </div>
       <div className={cx({ show__modal_burger: !shouldShowModalBurger })}>
-        <ModalBurger linkItems={NAV_ITEMS} onClose={onClose} onOpen={onOpen} />
+        <ModalBurger menuItems={NAV_ITEMS} onClose={onClose} onOpen={onOpen} />
       </div>
     </div>
   );
