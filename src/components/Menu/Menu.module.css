@@ -1,0 +1,22 @@
+.item {
+  padding-bottom: 22px;
+}
+
+.active {
+  font-weight: 700;
+  color: var(--color-cornflower-blue);
+}
+
+@media screen and (min-width: 1280px) {
+  .item {
+    padding: 19px 29px 22px;
+
+    border: var(--border-solid-small) var(--color-athens-gray);
+    border-bottom: none;
+  }
+
+  .item:last-child {
+    padding-top: 21px;
+    border-bottom: var(--border-solid-small) var(--color-athens-gray);
+  }
+}

@@ -8,7 +8,7 @@ class Api {
   async fetchData(props) {
     try {
       const url = API_URL + this.endpoint;
-      const idUrl = props?.id ? `/${id}` : "";
+      const idUrl = props?.id ? `/${props.id}` : "";
 
       const response = await fetch(url + idUrl);
 

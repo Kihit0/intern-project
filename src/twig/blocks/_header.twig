@@ -1,4 +1,4 @@
-<header class="header">
+<header id="header" class="header">
   <div class="header__wrapper container">
     <div class="header__center">
       <div class="header__logo">
@@ -12,6 +12,9 @@
     </div>
     <div class="header__user">
       {% include "blocks/_user.twig" %}
+    </div>
+    <div id="burger" class="header__burger">
+      <img class="header__burger_img" src="/src/assets/images/icons/burger.svg" alt="меню" />
     </div>
   </div>
 </header>

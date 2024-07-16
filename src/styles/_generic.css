@@ -43,22 +43,27 @@ h3 {
 
 p {
   font-size: var(--font-size-text-base);
-  color: var(--color-regent-gray);
+  color: var(--color-outer-space);
 }
 
-ol {
+ol:not([class]) {
   list-style: none;
   counter-reset: section;
 }
 
-ol > li::before {
+ol:not([class]) > li:not([class])::before {
   counter-increment: section;
-  content: counters(section, ".") " ";
-  color: var(--color-cornflower-blue);
+  content: counters(section, ".") ".";
+  color: var(--color-sail);
 }
 
-ul > li::marker {
-  color: var(--color-cornflower-blue);
+ul:not([class]) > li:not([class])::marker {
+  color: var(--color-sail);
+}
+
+ul:not([class]) > li:not([class]),
+ol:not([class]) > li:not([class]) {
+  padding-left: 20px;
 }
 
 img {
@@ -74,13 +79,12 @@ a {
 
 blockquote {
   margin: 0;
-  padding: 20px 25px;
+  padding: 23px 25px;
 
   background-color: var(--color-wild-sand);
   border-radius: var(--border-radius-small);
   border-left: 5px solid var(--color-sail);
 }
-
 
 @media screen and (min-width: 768px) {
   h1 {

@@ -3,12 +3,13 @@ import moment from "moment";
 
 moment.locale("ru");
 
-const normalizeDate = (date) => {
-  return moment(moment.unix(Number(date)).utc()).format("L");
-};
-
 const DateInfo = (props) => {
-  const { children, date, isViewInfo, className } = props;
+  const { children, date, isViewInfo, className, viewDate } = props;
+
+  const normalizeDate = (date) => {
+    const format = viewDate ? viewDate : "L";
+    return moment(moment.unix(Number(date)).utc()).format(format);
+  };
 
   return (
     <div>

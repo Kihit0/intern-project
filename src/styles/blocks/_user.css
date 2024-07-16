@@ -48,6 +48,10 @@
   height: inherit;
 }
 
+.header__with_burger .user__name_wrapper {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .user__name_wrapper {
     margin-right: -2px;
@@ -55,6 +59,10 @@
 
   .user__name {
     padding: 0 0 2px 1px;
+  }
+
+  .header__with_burger .user__name_wrapper {
+    display: flex;
   }
 }
 

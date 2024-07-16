@@ -40,6 +40,10 @@
   padding: 11px 0 40px;
 }
 
+.hidden {
+  overflow: hidden;
+}
+
 @media screen and (min-width: 768px) {
   .content {
     margin-top: var(--header-height-desktop);

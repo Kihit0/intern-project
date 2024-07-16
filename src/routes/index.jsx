@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Main from "../pages/Main";
+import News from "../pages/News";
 
 const router = createBrowserRouter([
   {
@@ -12,14 +13,14 @@ const router = createBrowserRouter([
       {
         id: "Main",
         path: "",
-        element: <Main />
-      }
-    ]
+        element: <Main />,
+      },
+    ],
   },
   {
     id: "news",
     path: "/news/:id",
-    element: <div>News</div>,
+    element: <News />,
   },
   {
     id: "promotions",
