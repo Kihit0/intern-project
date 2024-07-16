@@ -6,7 +6,7 @@ import DataInfo from "../components/DateInfo/DateInfo";
 import { useHref, useParams } from "react-router-dom";
 
 import { getOneItem } from "../api/endpoint";
-import Burger from "../components/Burger/Burger";
+import ModalBurger from "../components/ModalBurger/ModalBurger";
 import Menu from "../components/Menu/Menu";
 
 const DEFAULT_IMAGE = "src/assets/images/default-card-header.jpg";
@@ -73,7 +73,7 @@ const News = () => {
     <div className={styles.news} ref={newsRef}>
       <div className={styles.wrapper}>
         {isShowModalBurger && (
-          <Burger linkItems={NAV_ITEMS} onClose={onClose} />
+          <ModalBurger linkItems={NAV_ITEMS} onClose={onClose} />
         )}
         {isShowMenu && (
           <div className={styles.wrapper__menu}>

@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "./Burger.module.css";
+import styles from "./ModalBurger.module.css";
 
 import CloseIcon from "../Icons/CloseIcon";
 import Menu from "../Menu/Menu";
 
-const Burger = (props) => {
+const ModalBurger = (props) => {
   const { linkItems, onClose } = props;
 
   const handleBackgroundClick = (e) => {
@@ -44,4 +44,4 @@ const Burger = (props) => {
   );
 };
 
-export default Burger;
+export default ModalBurger;
