@@ -1,5 +1,7 @@
 .item {
   padding-bottom: 22px;
+
+  cursor: pointer;
 }
 
 .active {

@@ -87,7 +87,7 @@ const News = () => {
             <TitleBlock title={<>Новости</>} />
             <div className={styles.content}>
               <div className={styles.date}>
-                <DataInfo date={item.pubDate} viewDate="DD MMM YYYY" />
+                <DataInfo date={item.pubDate} formatDate="DD MMM YYYY" />
               </div>
               <div className={styles.title}>
                 <h2>{item.title}</h2>
