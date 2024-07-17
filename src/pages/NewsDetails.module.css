@@ -35,10 +35,6 @@
   border-radius: var(--border-radius-small);
 }
 
-.show__modal_burger {
-  display: none;
-}
-
 @media screen and (min-width: 768px) {
   .news {
     padding-top: 16px;

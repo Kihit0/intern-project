@@ -79,6 +79,10 @@ img {
   display: block;
 }
 
+img:not([class]) {
+  height: 220px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -97,5 +101,9 @@ blockquote {
   h1 {
     font-size: var(--font-size-title-desktop);
     line-height: 43px;
+  }
+
+  img:not([class]) {
+    height: 434px;
   }
 }

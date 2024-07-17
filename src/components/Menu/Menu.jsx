@@ -1,25 +1,24 @@
 import React, { useState } from "react";
 import styles from "./Menu.module.css";
 import classNames from "classnames/bind";
+import { Link, useHref } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
 const Menu = (props) => {
   const { items } = props;
-
-  const [activeLink, setActiveLink] = useState(0);
+  const href = useHref();
 
   return (
     <nav className={styles.nav}>
       {items.map((item, idx) => (
         <div className={styles.item} key={idx}>
-          <a
-            className={cx(styles.link, { active: activeLink === idx })}
-            href="#"
-            onClick={() => setActiveLink(idx)}
+          <Link
+            className={cx(styles.link, { active: href.includes(item.url) })}
+            to={item.url}
           >
-            {item}
-          </a>
+            {item.name}
+          </Link  >
         </div>
       ))}
     </nav>

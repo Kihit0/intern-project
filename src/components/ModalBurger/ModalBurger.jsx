@@ -13,13 +13,14 @@ const ModalBurger = (props) => {
   const [shouldShowModalBurger, setShouldShowModalBurger] = useState(false);
 
   const closeModalBurger = () => {
+    const body = document.querySelector("body");
+    body.classList.remove("hidden");
+
     setShouldShowModalBurger(false);
   };
 
   const handleBackgroundClick = (e) => {
-    const body = document.querySelector("body");
     if (e.target === e.currentTarget) {
-      body.classList.remove("hidden");
       closeModalBurger();
     }
   };

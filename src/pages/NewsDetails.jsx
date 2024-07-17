@@ -12,11 +12,26 @@ import { getOneItem } from "../api/endpoint";
 const DEFAULT_IMAGE = "src/assets/images/default-card-header.jpg";
 
 const NAV_ITEMS = [
-  "Избранное",
-  "Моя компания",
-  "Моё развитие",
-  "Новости компании",
-  "Телефонная книга",
+  {
+    name: "Избранное",
+    url: "/news",
+  },
+  {
+    name: "Моя компания",
+    url: "/profile",
+  },
+  {
+    name: "Моё развитие",
+    url: "#",
+  },
+  {
+    name: "Новости компании",
+    url: "#",
+  },
+  {
+    name: "Телефонная книга",
+    url: "#",
+  },
 ];
 
 const NewsDetails = () => {
@@ -51,7 +66,6 @@ const NewsDetails = () => {
               </div>
               <div className={styles.wrapper__img}>
                 <img
-                  className={styles.img}
                   src={
                     (newsDetailsData.image || newsDetailsData.link) ??
                     DEFAULT_IMAGE
