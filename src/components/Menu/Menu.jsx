@@ -7,17 +7,19 @@ const cx = classNames.bind(styles);
 const Menu = (props) => {
   const { items } = props;
 
-  const [activeItem, setActiveItem] = useState(0);
+  const [activeLink, setActiveLink] = useState(0);
 
   return (
     <nav className={styles.nav}>
       {items.map((item, idx) => (
-        <div
-          className={styles.item}
-          key={idx}
-          onClick={() => setActiveItem(idx)}
-        >
-          <p className={cx({ active: activeItem === idx })}>{item}</p>
+        <div className={styles.item} key={idx}>
+          <a
+            className={cx(styles.link, { active: activeLink === idx })}
+            href="#"
+            onClick={() => setActiveLink(idx)}
+          >
+            {item}
+          </a>
         </div>
       ))}
     </nav>

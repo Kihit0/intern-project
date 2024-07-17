@@ -20,39 +20,10 @@ const NAV_ITEMS = [
   "Телефонная книга",
 ];
 
-const cx = classNames.bind(styles);
-
 const NewsDetails = () => {
   const { id } = useParams();
 
   const [newsDetailsData, setNewsDetailsData] = useState(null);
-  const [shouldShowModalBurger, setShouldShowModalBurger] = useState(false);
-  const [isShowMenu, setIsShowMenu] = useState(false);
-
-  const onClose = () => {
-    setShouldShowModalBurger(false);
-  };
-
-  const onOpen = () => {
-    setShouldShowModalBurger(true);
-  };
-
-  useEffect(() => {
-    const updateHeight = () => {
-      if (window.innerWidth >= 1280) {
-        setIsShowMenu(true);
-      } else {
-        setIsShowMenu(false);
-      }
-    };
-
-    updateHeight();
-
-    window.addEventListener("resize", updateHeight);
-    return () => {
-      window.removeEventListener("resize", updateHeight);
-    };
-  }, []);
 
   useEffect(() => {
     getOneItem("news", { id }).then(({ data }) => setNewsDetailsData(data));
@@ -61,13 +32,12 @@ const NewsDetails = () => {
   return (
     <div className={styles.news}>
       <div className={styles.wrapper}>
-        {isShowMenu && (
-          <div className={styles.wrapper__menu}>
-            <div className={styles.menu}>
-              <Menu items={NAV_ITEMS} />
-            </div>
+        <div className={styles.wrapper__menu}>
+          <div className={styles.menu}>
+            <Menu items={NAV_ITEMS} />
           </div>
-        )}
+        </div>
+
         {newsDetailsData && (
           <div className={styles.news__content}>
             <TitleBlock title={<>Новости</>} />
@@ -99,8 +69,8 @@ const NewsDetails = () => {
           </div>
         )}
       </div>
-      <div className={cx({ show__modal_burger: !shouldShowModalBurger })}>
-        <ModalBurger menuItems={NAV_ITEMS} onClose={onClose} onOpen={onOpen} />
+      <div>
+        <ModalBurger menuItems={NAV_ITEMS} />
       </div>
     </div>
   );

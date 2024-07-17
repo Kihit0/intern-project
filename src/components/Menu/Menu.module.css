@@ -1,5 +1,5 @@
 .item {
-  padding-bottom: 22px;
+  margin-bottom: 22px;
 
   cursor: pointer;
 }
@@ -15,17 +15,13 @@
   }
 
   .item {
-    padding: 18px 29px 23px;
+    padding: 18px 29px 21px;
+    margin-bottom: 0;
 
     border-bottom: var(--border-solid-small) var(--color-athens-gray);
   }
 
-  .item:nth-child(4) {
-    padding-top: 19px;
-  }
-
-  .item:last-child {
-    padding-top: 20px;
-    border-bottom: none;
-  }
+  .link {
+    line-height: 19.5px;
+  } 
 }

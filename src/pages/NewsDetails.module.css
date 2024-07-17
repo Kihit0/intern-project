@@ -2,6 +2,10 @@
   padding-top: 10px;
 }
 
+.wrapper__menu {
+  display: none;
+}
+
 .content {
   width: calc(100% + 40px);
 
@@ -51,6 +55,7 @@
   }
 
   .wrapper__menu {
+    display: block;
     padding-top: 25px;
   }
 
