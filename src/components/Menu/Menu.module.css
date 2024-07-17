@@ -15,13 +15,15 @@
   }
 
   .item {
-    padding: 18px 29px 21px;
     margin-bottom: 0;
 
     border-bottom: var(--border-solid-small) var(--color-athens-gray);
   }
 
   .link {
+    display: block;
+    padding: 18px 29px 21px;
+
     line-height: 19.5px;
-  } 
+  }
 }
