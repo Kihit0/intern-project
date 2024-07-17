@@ -1,14 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./NewsDetails.module.css";
+import { useParams } from "react-router-dom";
 
 import TitleBlock from "../components/TitleBlock/TitleBlock";
 import DataInfo from "../components/DateInfo/DateInfo";
-import { useParams } from "react-router-dom";
-
-import { getOneItem } from "../api/endpoint";
 import ModalBurger from "../components/ModalBurger/ModalBurger";
 import Menu from "../components/Menu/Menu";
-import classNames from "classnames/bind";
+
+import { getOneItem } from "../api/endpoint";
 
 const DEFAULT_IMAGE = "src/assets/images/default-card-header.jpg";
 
@@ -37,7 +36,6 @@ const NewsDetails = () => {
             <Menu items={NAV_ITEMS} />
           </div>
         </div>
-
         {newsDetailsData && (
           <div className={styles.news__content}>
             <TitleBlock title={<>Новости</>} />
