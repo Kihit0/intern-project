@@ -15,33 +15,23 @@ const Input = (props) => {
     value,
     onChange,
     placeholder = "...",
-    type="text",
-    isDisabled
+    type = "text",
+    isDisabled,
   } = props;
 
   return (
     <div className={styles.block}>
       <Label id={id} label={label} error={error} isDisabled={isDisabled}>
-        {mask ? (
-          <ReactInputMask
-            className={cx(styles.input, { error: error })}
-            id={id}
-            mask={mask}
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
-          />
-        ) : (
-          <input
-            className={cx(styles.input, { error: error })}
-            type={type}
-            id={id}
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-            disabled={isDisabled}
-          />
-        )}
+        <ReactInputMask
+          className={cx(styles.input, { error: error })}
+          id={id}
+          type={type}
+          mask={mask}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          disabled={isDisabled}
+        />
       </Label>
     </div>
   );

@@ -4,7 +4,7 @@
   cursor: pointer;
 }
 
-.container input[type="checkbox"] {
+.container .checkbox {
   display: none;
 }
 

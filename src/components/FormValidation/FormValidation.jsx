@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./FormValidation.module.css";
 import { Formik } from "formik";
 
@@ -7,7 +7,7 @@ import Input from "../../ui/Input/Input";
 import Select from "../../ui/Select/Select";
 import Button from "../Button/Button";
 import Checkbox from "../../ui/Checkbox/Checkbox";
-import Radiobutton from "../../ui/Radiobutton/Radiobutton";
+import Radio from "../../ui/Radio/Radio";
 
 const common = {
   name: "Иванов Иван Иванович",
@@ -28,7 +28,7 @@ const phones = {
   homeTel: "",
 };
 
-const ru = {
+const viewData = {
   name: {
     label: "ФИО",
   },
@@ -96,7 +96,24 @@ const validate = (values) => {
   return Object.fromEntries(errors);
 };
 
+const valueCheckbox = [
+  { text: "Неактивен, выбран", isActive: true, isDisabled: true },
+  { text: "Неактивен, не выбран", isActive: false, isDisabled: true },
+  { text: "Я люблю чекбоксы", isActive: true, isDisabled: false },
+  { text: "Я ненавижу чекбоксы", isActive: false, isDisabled: false },
+];
+
 const FormValidation = () => {
+  const [checkboxItems, setCheckboxItems] = useState(valueCheckbox);
+
+  const onClickCheckbox = (item) => {
+    setCheckboxItems((prev) =>
+      prev.map((el) =>
+        el.text === item.text ? { ...el, isActive: !item.isActive } : el
+      )
+    );
+  };
+
   return (
     <div>
       <Formik
@@ -127,10 +144,10 @@ const FormValidation = () => {
                       <Input
                         value={values[item]}
                         onChange={handleChange}
-                        label={ru[item].label}
+                        label={viewData[item].label}
                         id={item}
-                        isDisabled={ru[item]?.isDisabled}
-                        placeholder={ru[item]?.placeholder}
+                        isDisabled={viewData[item]?.isDisabled}
+                        placeholder={viewData[item]?.placeholder}
                         error={touched[item] && errors[item]}
                       />
                     </div>
@@ -162,7 +179,7 @@ const FormValidation = () => {
                       id={item}
                       value={values[item]}
                       onChange={handleChange}
-                      label={ru[item].label}
+                      label={viewData[item].label}
                       mask="+7 999 999 99 99"
                       placeholder="+7 999 999 99 99"
                       error={touched[item] && errors[item]}
@@ -175,26 +192,22 @@ const FormValidation = () => {
                       id={item}
                       value={values[item]}
                       onChange={handleChange}
-                      label={ru[item].label}
+                      label={viewData[item].label}
                       type="email"
-                      placeholder="mail@amocrm.ru"
+                      placeholder="mail@amocrm.viewData"
                       error={touched[item] && errors[item]}
                     />
                   </div>
                 ))}
               </FormBlock>
               <FormBlock title="Мое мнение о чекбоксах">
-                {[
-                  "Неактивен, выбран",
-                  "Неактивен, не выбран",
-                  "Я люблю чекбоксы",
-                  "Я ненавижу чекбоксы",
-                ].map((text, idx) => (
+                {checkboxItems.map((item, idx) => (
                   <div className={styles.item__checkbox} key={idx}>
                     <Checkbox
-                      isActive={idx % 2 === 0}
-                      isDisabled={idx < 2}
-                      text={text}
+                      isActive={item.isActive}
+                      isDisabled={item.isDisabled}
+                      onClick={() => console.log(item)}
+                      text={item.text}
                     />
                   </div>
                 ))}
@@ -207,7 +220,7 @@ const FormValidation = () => {
                   "Я ненавижу радио-кнопки",
                 ].map((text, idx) => (
                   <div className={styles.item__radio} key={idx}>
-                    <Radiobutton
+                    <Radio
                       isActive={idx % 2 === 0}
                       isDisabled={idx < 2}
                       text={text}

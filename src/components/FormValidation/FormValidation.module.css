@@ -1,5 +1,5 @@
 .content {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .item__common {
@@ -11,7 +11,7 @@
 }
 
 .item__contacts {
-  margin-bottom: 9px;
+  margin-bottom: 12px;
 }
 
 .item__checkbox {
@@ -45,14 +45,26 @@
 }
 
 .btn-small {
-  padding: 9px 12px;
+  padding: 11px 12px;
 }
 
 .btn-transparent {
-  padding: 10px 11px ;
-  
+  padding: 12px 10px;
+
   color: var(--color-regent-gray);
 
   background-color: transparent;
   border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .buttons {
+    padding-inline: 30px;
+  }
 }

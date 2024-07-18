@@ -7,7 +7,7 @@
 }
 
 .content {
-  padding-block: 10px;
+  padding-block: 10px 0;
 }
 
 .form {
@@ -19,6 +19,13 @@
   background-color: var(--color-white);
 }
 
+@media screen and (min-width: 768px) {
+  .custom__title {
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .wrapper {
     display: flex;
@@ -28,6 +35,10 @@
 
   .wrapper__menu {
     display: block;
+  }
+
+  .form {
+    width: 100%;
   }
 
   .menu {
@@ -44,8 +55,8 @@
     padding-top: 0;
   }
 
-  .title {
-    margin-top: -26px;
+  .custom__title {
+    margin-block: 0 21px;
   }
 
   .form {

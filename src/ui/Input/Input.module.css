@@ -19,8 +19,10 @@
   border-bottom: var(--border-solid-small) var(--color-cornflower-blue);
 }
 
-.input::placeholder {
+.input::placeholder ,
+.input::-moz-placeholder {
   color: var(--color-regent-gray);
+  opacity: 1;
 }
 
 .error {
@@ -31,8 +33,10 @@
   border-bottom-color: var(--color-flory);
 }
 
-.error::placeholder {
+.error::placeholder
+.error::-moz-placeholder {
   color: var(--color-flory);
+  opacity: 1;
 }
 
 input:disabled {

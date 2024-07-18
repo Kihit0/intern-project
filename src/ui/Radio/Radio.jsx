@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "./Radiobutton.module.css";
+import styles from "./Radio.module.css";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-const Radiobutton = (props) => {
+const Radio = (props) => {
   const { isActive, onClick, isDisabled, text } = props;
 
   return (
@@ -14,9 +14,9 @@ const Radiobutton = (props) => {
           disabled: isDisabled,
           active: isActive,
         })}
-        onClick={onClick}
+        onClick={() => !isDisabled && onClick()}
       >
-        <input type="radio" />
+        <input className={styles.radio} type="radio" />
         <span className={styles.custom}></span>
         <span className={styles.label}>{text}</span>
       </label>
@@ -24,4 +24,4 @@ const Radiobutton = (props) => {
   );
 };
 
-export default Radiobutton;
+export default Radio;

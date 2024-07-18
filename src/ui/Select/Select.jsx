@@ -17,6 +17,7 @@ const customStyles = {
     boxShadow: state.isFocused ? "transparent" : "transparent",
     minHeight: "19px",
     justifyContent: "flex-start",
+    cursor: "pointer",
     "&:hover": { borderColor: state.isFocused ? "transparent" : "transparent" },
   }),
   valueContainer: (provided) => ({ ...provided, padding: "0", flex: "none" }),
@@ -25,6 +26,7 @@ const customStyles = {
     backgroundColor:
       state.isFocused || state.isSelected ? "var(--color-wild-sand)" : "white",
     color: "var(--color-outer-space)",
+    cursor: "pointer",
     "&:hover": { backgroundColor: "var(--color-wild-sand)" },
   }),
   indicatorSeparator: () => ({ display: "none" }),

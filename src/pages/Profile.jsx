@@ -40,7 +40,7 @@ const Profile = () => {
         </div>
         <div className={styles.content}>
           <div className={styles.title}>
-            <TitleBlock title={<>Редактировать профиль</>} />
+            <TitleBlock title="Редактировать профиль" classNameTitle={styles.custom__title} />
           </div>
           <div className={styles.form}>
             <FormValidation />

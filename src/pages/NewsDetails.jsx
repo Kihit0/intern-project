@@ -53,7 +53,7 @@ const NewsDetails = () => {
         </div>
         {newsDetailsData && (
           <div className={styles.news__content}>
-            <TitleBlock title={<>Новости</>} />
+            <TitleBlock title="Новости" />
             <div className={styles.content}>
               <div className={styles.date}>
                 <DataInfo

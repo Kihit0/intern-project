@@ -8,13 +8,14 @@ const cx = classNames.bind(styles);
 
 const Checkbox = (props) => {
   const { isActive = false, onClick, isDisabled, text } = props;
+  
   return (
     <div>
       <label
         className={cx(styles.container, { disabled: isDisabled })}
-        onClick={onClick}
+        onClick={() => !isDisabled && onClick("true")}
       >
-        <input type="checkbox" />
+        <input className={styles.checkbox} type="checkbox" />
         <span className={styles.custom}>
           {isActive && (
             <CheckedIcon color={isDisabled ? "var(--color-alto)" : undefined} />
