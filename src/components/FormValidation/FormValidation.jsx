@@ -51,27 +51,27 @@ const selectData = [
 const initialValues = { ...common, ...phones, ...emails };
 
 const validate = (values) => {
-  const errors = {};
+  const errors = new Map();
 
   Object.keys(values).forEach((item) => {
     if (!values[item]) {
-      errors[item] = "Пустое поле";
+      errors.set(item, "Пустое поле");
     }
 
-    if (values[item] && Object.keys(emails).includes(item)) {
+    if (values[item] && Object.keys(emails).indexOf(item) !== -1) {
       if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values[item])) {
-        errors[item] = "Некорректный email";
+        errors.set(item, "Некорректный email");
       }
     }
 
-    if (values[item] && Object.keys(phones).includes(item)) {
+    if (values[item] && Object.keys(phones).indexOf(item) !== -1) {
       if (!/\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}/.test(values[item])) {
-        errors[item] = "Некорректный номер";
+        errors.set(item, "Некорректный номер");
       }
     }
   });
 
-  return errors;
+  return Object.fromEntries(errors);
 };
 
 const FormValidation = () => {
