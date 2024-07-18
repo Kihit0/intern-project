@@ -27,6 +27,7 @@ const Input = (props) => {
           id={id}
           type={type}
           mask={mask}
+          maskPlaceholder=" "
           value={value}
           onChange={onChange}
           placeholder={placeholder}

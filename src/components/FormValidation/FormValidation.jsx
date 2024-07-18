@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./FormValidation.module.css";
 import { Formik } from "formik";
 
@@ -10,7 +10,7 @@ import Checkbox from "../../ui/Checkbox/Checkbox";
 import Radio from "../../ui/Radio/Radio";
 
 const common = {
-  name: "Иванов Иван Иванович",
+  name: "",
   city: "",
   about: "",
 };
@@ -31,6 +31,7 @@ const phones = {
 const viewData = {
   name: {
     label: "ФИО",
+    placeholder: "Иванов Иван Иванович"
   },
   city: {
     label: "Город",
@@ -76,7 +77,7 @@ const validate = (values) => {
   const errors = new Map();
 
   Object.keys(values).forEach((item) => {
-    if (!values[item]) {
+    if (!values[item] && !viewData[item]?.isDisabled) {
       errors.set(item, "Пустое поле");
     }
 
@@ -187,14 +188,14 @@ const FormValidation = () => {
                   </div>
                 ))}
                 {Object.keys(emails).map((item, idx) => (
-                  <div className={styles.item} key={idx}>
+                  <div className={styles.item__email} key={idx}>
                     <Input
                       id={item}
                       value={values[item]}
                       onChange={handleChange}
                       label={viewData[item].label}
                       type="email"
-                      placeholder="mail@amocrm.viewData"
+                      placeholder="mail@amocrm.ru"
                       error={touched[item] && errors[item]}
                     />
                   </div>

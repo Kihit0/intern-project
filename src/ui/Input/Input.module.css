@@ -1,10 +1,12 @@
 .block {
-  padding-top: 1px;
+  padding-top: 2px;
 }
 
 .input {
+  position: relative;
+
   width: calc(100% - 121px);
-  padding-left: 1px;
+  padding: 4px 0 6px 1px;
 
   color: var(--color-outer-space);
 
@@ -12,14 +14,16 @@
 }
 
 .input:focus {
-  padding-block: 2px 5px;
-
   outline: none;
+  padding-bottom: 5px;
 
   border-bottom: var(--border-solid-small) var(--color-cornflower-blue);
 }
 
-.input::placeholder ,
+.input::placeholder {
+  color: var(--color-regent-gray);
+}
+
 .input::-moz-placeholder {
   color: var(--color-regent-gray);
   opacity: 1;
@@ -33,7 +37,10 @@
   border-bottom-color: var(--color-flory);
 }
 
-.error::placeholder
+.error::placeholder {
+  color: var(--color-flory);
+}
+
 .error::-moz-placeholder {
   color: var(--color-flory);
   opacity: 1;

@@ -3,15 +3,31 @@
 }
 
 .item__common {
-  margin-bottom: 10px;
+  margin-bottom: 7px;
 }
 
 .item__common:last-child {
-  margin-block: 13px 0;
+  margin-block: -4px 0;
 }
 
 .item__contacts {
-  margin-bottom: 12px;
+  margin-bottom: 2px;
+}
+
+.item__contacts:nth-child(4) {
+  margin-top: 4px;
+} 
+
+.item__contacts:nth-child(5) {
+  margin-bottom: 2px;
+}
+
+.item__email {
+  margin-bottom: 3px;
+}
+
+.item__email:last-child {
+  margin-bottom: 0;
 }
 
 .item__checkbox {
@@ -22,12 +38,19 @@
   margin-bottom: 12px;
 }
 
-.item__radio:last-child,
 .item__checkbox:last-child {
   margin-bottom: 0;
 }
 
+.item__radio:nth-child(4) {
+  margin-bottom: 6px;
+}
+
 .item {
+  margin-bottom: 6px;
+}
+
+.item:nth-child(2) {
   margin-bottom: 13px;
 }
 
@@ -66,5 +89,9 @@
 @media screen and (min-width: 1280px) {
   .buttons {
     padding-inline: 30px;
+  }
+
+  .content {
+    margin-bottom: 21px;
   }
 }
