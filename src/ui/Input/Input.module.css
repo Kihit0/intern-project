@@ -13,7 +13,7 @@
 
 .input:focus {
   padding-block: 2px 5px;
-  
+
   outline: none;
 
   border-bottom: var(--border-solid-small) var(--color-cornflower-blue);
@@ -35,3 +35,10 @@
   color: var(--color-flory);
 }
 
+input:disabled {
+  background-color: transparent;
+}
+
+.input:disabled::placeholder {
+  color: var(--color-silver);
+}

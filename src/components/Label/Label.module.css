@@ -18,3 +18,7 @@
   color: var(--color-flory);
   text-transform: lowercase;
 }
+
+.disabled {
+  color: var(--color-silver);
+}

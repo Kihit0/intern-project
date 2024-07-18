@@ -29,16 +29,38 @@ const phones = {
 };
 
 const ru = {
-  name: "ФИО",
-  city: "Город",
-  about: "О себе",
-  workingEmail: "Email раб.",
-  personalEmail: "Email личн.",
-  workingTel: "Раб. тел.",
-  workingStraightTel: "Раб. прямой",
-  mobileTel: "Мобильный",
-  fax: "Факс",
-  homeTel: "Домашний",
+  name: {
+    label: "ФИО",
+  },
+  city: {
+    label: "Город",
+    isDisabled: true,
+    placeholder: "Название города",
+  },
+  about: {
+    label: "О себе",
+  },
+  workingEmail: {
+    label: "Email раб.",
+  },
+  personalEmail: {
+    label: "Email личн.",
+  },
+  workingTel: {
+    label: "Раб. тел.",
+  },
+  workingStraightTel: {
+    label: "Раб. прямой",
+  },
+  mobileTel: {
+    label: "Мобильный",
+  },
+  fax: {
+    label: "Факс",
+  },
+  homeTel: {
+    label: "Домашний",
+  },
 };
 
 const selectData = [
@@ -94,7 +116,7 @@ const FormValidation = () => {
           handleChange,
           handleSubmit,
           isSubmitting,
-          resetForm
+          resetForm,
         }) => (
           <form onSubmit={handleSubmit}>
             <div className={styles.content}>
@@ -105,8 +127,10 @@ const FormValidation = () => {
                       <Input
                         value={values[item]}
                         onChange={handleChange}
-                        label={ru[item]}
+                        label={ru[item].label}
                         id={item}
+                        isDisabled={ru[item]?.isDisabled}
+                        placeholder={ru[item]?.placeholder}
                         error={touched[item] && errors[item]}
                       />
                     </div>
@@ -138,7 +162,7 @@ const FormValidation = () => {
                       id={item}
                       value={values[item]}
                       onChange={handleChange}
-                      label={ru[item]}
+                      label={ru[item].label}
                       mask="+7 999 999 99 99"
                       placeholder="+7 999 999 99 99"
                       error={touched[item] && errors[item]}
@@ -151,7 +175,7 @@ const FormValidation = () => {
                       id={item}
                       value={values[item]}
                       onChange={handleChange}
-                      label={ru[item]}
+                      label={ru[item].label}
                       type="email"
                       placeholder="mail@amocrm.ru"
                       error={touched[item] && errors[item]}

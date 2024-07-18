@@ -22,6 +22,11 @@
   margin-bottom: 12px;
 }
 
+.item__radio:last-child,
+.item__checkbox:last-child {
+  margin-bottom: 0;
+}
+
 .item {
   margin-bottom: 13px;
 }
