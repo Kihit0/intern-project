@@ -23,7 +23,7 @@
   .wrapper {
     display: flex;
 
-    padding-top: 25px;
+    padding-top: 40px;
   }
 
   .wrapper__menu {
@@ -39,7 +39,13 @@
 
   .content {
     width: calc(100% - 293px);
+
     margin-left: 25px;
+    padding-top: 0;
+  }
+
+  .title {
+    margin-top: -26px;
   }
 
   .form {
