@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import Checkbox from "../../ui/Checkbox/Checkbox";
-import FormBlock from "../FormBlock/FormBlock";
+import Radio from "../../ui/Radio/Radio";
 
-const LayoutCheckbox = (props) => {
+const LayoutRadio = (props) => {
   const { className } = props;
 
   const [checkboxValues, setCheckboxValues] = useState([
-    { text: "Неактивен, выбран", isActive: true, isDisabled: true },
-    { text: "Неактивен, не выбран", isActive: false, isDisabled: true },
-    { text: "Я люблю чекбоксы", isActive: true, isDisabled: false },
-    { text: "Я ненавижу чекбоксы", isActive: false, isDisabled: false },
+    { text: "Неактивна, выбрана", isActive: true, isDisabled: true },
+    { text: "Неактивна, не выбрана", isActive: false, isDisabled: true },
+    { text: "Я люблю радио-кнопки", isActive: true, isDisabled: false },
+    { text: "Я ненавижу радио-кнопки", isActive: false, isDisabled: false },
   ]);
 
   const onClickCheckbox = (index) => {
@@ -27,10 +26,10 @@ const LayoutCheckbox = (props) => {
   };
 
   return (
-    <FormBlock title="Мое мнение о чекбоксах">
+    <>
       {checkboxValues.map((item, idx) => (
         <div className={className} key={idx}>
-          <Checkbox
+          <Radio
             isActive={item.isActive}
             isDisabled={item.isDisabled}
             onClick={() => onClickCheckbox(idx)}
@@ -38,8 +37,8 @@ const LayoutCheckbox = (props) => {
           />
         </div>
       ))}
-    </FormBlock>
+    </>
   );
 };
 
-export default LayoutCheckbox;
+export default LayoutRadio;

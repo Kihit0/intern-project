@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Profile.module.css";
 
 import ModalBurger from "../../components/ModalBurger/ModalBurger";

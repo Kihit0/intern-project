@@ -7,9 +7,8 @@ import Input from "../../ui/Input/Input";
 import Textarea from "../../ui/Textarea/Textarea";
 import Select from "../../ui/Select/Select";
 import Button from "../Button/Button";
-import Checkbox from "../../ui/Checkbox/Checkbox";
-import Radio from "../../ui/Radio/Radio";
 import LayoutCheckbox from "../LayoutCheckbox/LayoutCheckbox";
+import LayoutRadio from "../LayoutRadio/LayoutRadio";
 
 const common = {
   name: "",
@@ -100,6 +99,7 @@ const validate = (values) => {
 };
 
 const FormValidation = () => {
+  console.log("form")
   return (
     <div>
       <Formik
@@ -198,22 +198,9 @@ const FormValidation = () => {
               </FormBlock>
               <LayoutCheckbox className={styles.item__checkbox} />
               <FormBlock title="Мое мнение о радио-кнопках">
-                {[
-                  "Неактивна, выбрана",
-                  "Неактивна, не выбрана",
-                  "Я люблю радио-кнопки",
-                  "Я ненавижу радио-кнопки",
-                ].map((text, idx) => (
-                  <div className={styles.item__radio} key={idx}>
-                    <Radio
-                      isActive={idx % 2 === 0}
-                      isDisabled={idx < 2}
-                      text={text}
-                    />
-                  </div>
-                ))}
+                <LayoutRadio className={styles.item__radio} />
                 <div className={styles.item}>
-                  <Textarea />
+                  <Textarea label="Комментарий" />
                 </div>
               </FormBlock>
             </div>

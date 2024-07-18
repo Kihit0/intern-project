@@ -14,10 +14,12 @@ const Radio = (props) => {
           disabled: isDisabled,
           active: isActive,
         })}
-        onClick={() => !isDisabled && onClick()}
       >
         <input className={styles.radio} type="radio" />
-        <span className={styles.custom}></span>
+        <span
+          className={styles.custom}
+          onClick={() => !isDisabled && onClick()}
+        ></span>
         <span className={styles.label}>{text}</span>
       </label>
     </div>

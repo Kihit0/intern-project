@@ -3,7 +3,7 @@
 }
 
 .wrapper {
-  padding: 15px 20px 21px;
+  padding: 15px 20px 19px;
 }
 
 .form__block:not(:nth-child(1)) .wrapper {
@@ -15,7 +15,7 @@
 }
 
 .form__block:nth-child(4) .wrapper {
-  padding-bottom: 22px;
+  padding-bottom: 25px;
 }
 
 .title {
@@ -36,7 +36,7 @@
   }
 
   .wrapper {
-    padding-block: 26px 31px;
+    padding-block: 26px 28px;
   }
 
   .form__block:not(:nth-child(1)) .wrapper {
@@ -48,7 +48,7 @@
   }
 
   .form__block:last-child .wrapper {
-    padding-block: 31px 32px;
+    padding-block: 31px 36px;
   }
 
   .form__block:nth-child(2) .title {
@@ -58,11 +58,11 @@
 
 @media screen and (min-width: 1280px) {
   .wrapper {
-    padding: 25px 30px 30px;
+    padding: 25px 30px 28px;
   }
 
   .form__block:last-child .wrapper {
-    padding-block: 33px 31px;
+    padding-block: 33px 34px;
   }
 
   .form__block:nth-child(3) .title {

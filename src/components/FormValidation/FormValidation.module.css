@@ -7,7 +7,7 @@
 }
 
 .item__common:last-child {
-  margin-block: -4px 0;
+  margin-top: 8px;
 }
 
 .item__contacts {
@@ -43,7 +43,7 @@
 }
 
 .item__radio:nth-child(4) {
-  margin-bottom: 6px;
+  margin-bottom: 11px;
 }
 
 .item {
