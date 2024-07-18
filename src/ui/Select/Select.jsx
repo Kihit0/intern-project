@@ -5,9 +5,6 @@ import styles from "./Select.module.css";
 import ChoiceIcon from "../../components/Icons/ChoiceIcon";
 import Label from "../../components/Label/Label";
 import ExpandIcon from "../../components/Icons/ExpandIcon";
-import classNames from "classnames/bind";
-
-const cx = classNames.bind(styles)
 
 const customStyles = {
   control: (provided, state) => ({
@@ -27,17 +24,33 @@ const customStyles = {
       state.isFocused || state.isSelected ? "var(--color-wild-sand)" : "white",
     color: "var(--color-outer-space)",
     cursor: "pointer",
+    padding: "8px 0 10px",
     "&:hover": { backgroundColor: "var(--color-wild-sand)" },
+    "&:last-child": { paddingBottom: "8px" },
   }),
   indicatorSeparator: () => ({ display: "none" }),
   indicatorsContainer: () => ({
     height: "20px",
     padding: "0 8px",
-    marginTop: "-14px", 
+    marginTop: "-8px",
   }),
   singleValue: (provided) => ({ ...provided, marginInline: 0 }),
-  menu: (provided) => ({ ...provided, zIndex: 9999 }),
-  menuList: (provided) => ({ ...provided, paddingBlock: 0 }),
+  menu: (provided) => ({
+    ...provided,
+    zIndex: 9999,
+    maxWidth: "325px",
+    boxShadow: "none",
+  }),
+  menuList: (provided) => ({
+    ...provided,
+    paddingBlock: 0,
+    width: "325px",
+    left: "-24px",
+    top: "-3px",
+    border: "var(--border-solid-small) var(--color-athens-gray)",
+    borderRadius: "var(--border-radius-small)",
+    boxShadow: "var(--box-shadow) rgba(0,0,0, 3%)",
+  }),
 };
 
 const CustomOption = (props) => {

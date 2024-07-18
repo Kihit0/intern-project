@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Main.module.css";
 
-import TitleBlock from "../components/TitleBlock/TitleBlock";
-import Tabs from "../components/Tabs/Tabs";
-import CardList from "../components/CardList/CardList";
+import TitleBlock from "../../components/TitleBlock/TitleBlock";
+import Tabs from "../../components/Tabs/Tabs";
+import CardList from "../../components/CardList/CardList";
 
 const TABS_DATA = [
   {

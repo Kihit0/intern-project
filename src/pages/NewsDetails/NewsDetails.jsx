@@ -2,40 +2,19 @@ import React, { useEffect, useState } from "react";
 import styles from "./NewsDetails.module.css";
 import { useParams } from "react-router-dom";
 
-import TitleBlock from "../components/TitleBlock/TitleBlock";
-import DataInfo from "../components/DateInfo/DateInfo";
-import ModalBurger from "../components/ModalBurger/ModalBurger";
-import Menu from "../components/Menu/Menu";
+import TitleBlock from "../../components/TitleBlock/TitleBlock";
+import DataInfo from "../../components/DateInfo/DateInfo";
+import ModalBurger from "../../components/ModalBurger/ModalBurger";
+import LayoutMenu from "../../components/LayoutMenu/LayoutMenu";
 
-import { getOneItem } from "../api/endpoint";
+import { getOneItem } from "../../api/endpoint";
+
+import { NAV_ITEMS } from "../../constans/constants.data";
 
 const DEFAULT_IMAGE = "src/assets/images/default-card-header.jpg";
 
 const NewsDetails = () => {
   const { id } = useParams();
-
-  const NAV_ITEMS = [
-    {
-      name: "Избранное",
-      url: `/news/${id}`,
-    },
-    {
-      name: "Моя компания",
-      url: "/profile",
-    },
-    {
-      name: "Моё развитие",
-      url: "#",
-    },
-    {
-      name: "Новости компании",
-      url: "#",
-    },
-    {
-      name: "Телефонная книга",
-      url: "#",
-    },
-  ];
 
   const [newsDetailsData, setNewsDetailsData] = useState(null);
 
@@ -46,11 +25,7 @@ const NewsDetails = () => {
   return (
     <div className={styles.news}>
       <div className={styles.wrapper}>
-        <div className={styles.wrapper__menu}>
-          <div className={styles.menu}>
-            <Menu items={NAV_ITEMS} />
-          </div>
-        </div>
+        <LayoutMenu items={NAV_ITEMS} />
         {newsDetailsData && (
           <div className={styles.news__content}>
             <TitleBlock title="Новости" />

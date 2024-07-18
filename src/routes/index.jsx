@@ -1,9 +1,9 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Main from "../pages/Main";
-import NewsDetails from "../pages/NewsDetails";
-import Profile from "../pages/Profile";
+import Main from "../pages/Main/Main";
+import NewsDetails from "../pages/NewsDetails/NewsDetails";
+import Profile from "../pages/Profile/Profile";
 
 const router = createBrowserRouter([
   {

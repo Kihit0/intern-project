@@ -1,17 +1,14 @@
-.select {
-  width: 64%;
-}
-
 .option_container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 
-  padding-left: 20px;
+  padding-left: 16px;
 }
 
 .checkmark {
-  margin-inline: -20px 8px;
+  margin-top: -3px;
+  margin-inline: -8px -2px;
   color: var(--color-outer-space);
 }
 
