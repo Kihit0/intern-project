@@ -7,13 +7,13 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 const Checkbox = (props) => {
-  const { isActive = false, onClick, isDisabled, text } = props;
-  
+  const { isActive, onClick, isDisabled, text } = props;
+
   return (
     <div>
       <label
         className={cx(styles.container, { disabled: isDisabled })}
-        onClick={() => !isDisabled && onClick("true")}
+        onClick={onClick}
       >
         <input className={styles.checkbox} type="checkbox" />
         <span className={styles.custom}>

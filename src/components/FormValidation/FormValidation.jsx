@@ -8,6 +8,7 @@ import Select from "../../ui/Select/Select";
 import Button from "../Button/Button";
 import Checkbox from "../../ui/Checkbox/Checkbox";
 import Radio from "../../ui/Radio/Radio";
+import LayoutCheckbox from "../LayoutCheckbox/LayoutCheckbox";
 
 const common = {
   name: "",
@@ -97,24 +98,7 @@ const validate = (values) => {
   return Object.fromEntries(errors);
 };
 
-const valueCheckbox = [
-  { text: "Неактивен, выбран", isActive: true, isDisabled: true },
-  { text: "Неактивен, не выбран", isActive: false, isDisabled: true },
-  { text: "Я люблю чекбоксы", isActive: true, isDisabled: false },
-  { text: "Я ненавижу чекбоксы", isActive: false, isDisabled: false },
-];
-
 const FormValidation = () => {
-  const [checkboxItems, setCheckboxItems] = useState(valueCheckbox);
-
-  const onClickCheckbox = (item) => {
-    setCheckboxItems((prev) =>
-      prev.map((el) =>
-        el.text === item.text ? { ...el, isActive: !item.isActive } : el
-      )
-    );
-  };
-
   return (
     <div>
       <Formik
@@ -201,18 +185,7 @@ const FormValidation = () => {
                   </div>
                 ))}
               </FormBlock>
-              <FormBlock title="Мое мнение о чекбоксах">
-                {checkboxItems.map((item, idx) => (
-                  <div className={styles.item__checkbox} key={idx}>
-                    <Checkbox
-                      isActive={item.isActive}
-                      isDisabled={item.isDisabled}
-                      onClick={() => console.log(item)}
-                      text={item.text}
-                    />
-                  </div>
-                ))}
-              </FormBlock>
+              <LayoutCheckbox className={styles.item__checkbox} />
               <FormBlock title="Мое мнение о радио-кнопках">
                 {[
                   "Неактивна, выбрана",

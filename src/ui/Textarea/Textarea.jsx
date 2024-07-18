@@ -6,20 +6,15 @@ const Textarea = () => {
 
   useEffect(() => {
     const textarea = textareaRef.current;
-
     const handleInput = () => {
-      textarea.style.height = "auto";
-      if (textarea.scrollHeight < 100) {
-        textarea.style.height = "100px";
-      } else {
-        textarea.style.height = Math.min(textarea.scrollHeight, 100) + "px";
-      }
+      textarea.style.height = "20px";
+      textarea.style.height = Math.min(textarea.height, 100) + "px";
     };
 
     textarea.addEventListener("input", handleInput);
 
     return () => {
-      textarea.style.height = "auto";
+      textarea.style.height = "20px";
       textarea.removeEventListener("input", handleInput);
     };
   }, []);
