@@ -4,6 +4,10 @@ import styles from "./Select.module.css";
 
 import ChoiceIcon from "../../components/Icons/ChoiceIcon";
 import Label from "../../components/Label/Label";
+import ExpandIcon from "../../components/Icons/ExpandIcon";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles)
 
 const customStyles = {
   control: (provided, state) => ({
@@ -19,16 +23,19 @@ const customStyles = {
   option: (provided, state) => ({
     ...provided,
     backgroundColor:
-      state.isFocused || state.isSelected
-        ? "var(--color-wild-sand)"
-        : "white",
+      state.isFocused || state.isSelected ? "var(--color-wild-sand)" : "white",
     color: "var(--color-outer-space)",
     "&:hover": { backgroundColor: "var(--color-wild-sand)" },
   }),
   indicatorSeparator: () => ({ display: "none" }),
-  indicatorsContainer: () => ({ height: "20px", padding: "0 8px", marginTop: "-14px" }),
-  singleValue: (provided) => ({...provided, marginInline: 0}),
+  indicatorsContainer: () => ({
+    height: "20px",
+    padding: "0 8px",
+    marginTop: "-14px", 
+  }),
+  singleValue: (provided) => ({ ...provided, marginInline: 0 }),
   menu: (provided) => ({ ...provided, zIndex: 9999 }),
+  menuList: (provided) => ({ ...provided, paddingBlock: 0 }),
 };
 
 const CustomOption = (props) => {
@@ -46,6 +53,14 @@ const CustomOption = (props) => {
   );
 };
 
+const CustomIndicator = (props) => {
+  return (
+    <components.DropdownIndicator {...props}>
+      <ExpandIcon />
+    </components.DropdownIndicator>
+  );
+};
+
 const Select = (props) => {
   const { label, selectData } = props;
 
@@ -58,7 +73,10 @@ const Select = (props) => {
             defaultValue={selectData[1]}
             options={selectData}
             isSearchable={false}
-            components={{ Option: CustomOption }}
+            components={{
+              Option: CustomOption,
+              DropdownIndicator: CustomIndicator,
+            }}
           />
         </div>
       </Label>

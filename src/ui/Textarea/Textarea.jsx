@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./Textarea.module.css";
 
 const Textarea = () => {
@@ -9,12 +9,17 @@ const Textarea = () => {
 
     const handleInput = () => {
       textarea.style.height = "auto";
-      textarea.style.height = Math.min(textarea.scrollHeight, 100) + "px";
+      if (textarea.scrollHeight < 100) {
+        textarea.style.height = "100px";
+      } else {
+        textarea.style.height = Math.min(textarea.scrollHeight, 100) + "px";
+      }
     };
 
     textarea.addEventListener("input", handleInput);
 
     return () => {
+      textarea.style.height = "auto";
       textarea.removeEventListener("input", handleInput);
     };
   }, []);

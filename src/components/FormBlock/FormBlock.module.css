@@ -5,11 +5,16 @@
 }
 
 .wrapper {
-  width: 60%;
-  
   padding: 15px 20px 25px;
 }
 
 .title {
   padding-bottom: 13px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    width: 50%;
+  }
 }
