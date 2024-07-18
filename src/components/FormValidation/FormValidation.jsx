@@ -48,30 +48,30 @@ const selectData = [
   { value: "Hover", label: "Hover" },
 ];
 
-const initialValues = Object.assign({}, common, phones, emails);
+const initialValues = { ...common, ...phones, ...emails };
 
 const validate = (values) => {
-  const errors = new Map();
+  const errors = {};
 
   Object.keys(values).forEach((item) => {
     if (!values[item]) {
-      errors.set(item, "Пустое поле");
+      errors[item] = "Пустое поле";
     }
 
-    if (values[item] && Object.keys(emails).indexOf(item) !== -1) {
+    if (values[item] && Object.keys(emails).includes(item)) {
       if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values[item])) {
-        errors.set(item, "Некорректный email");
+        errors[item] = "Некорректный email";
       }
     }
 
-    if (values[item] && Object.keys(phones).indexOf(item) !== -1) {
+    if (values[item] && Object.keys(phones).includes(item)) {
       if (!/\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}/.test(values[item])) {
-        errors.set(item, "Некорректный номер");
+        errors[item] = "Некорректный номер";
       }
     }
   });
 
-  return Object.fromEntries(errors);
+  return errors;
 };
 
 const FormValidation = () => {
@@ -79,7 +79,7 @@ const FormValidation = () => {
     <div>
       <Formik
         initialValues={initialValues}
-        validate={(values) => validate(values)}
+        validate={validate}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
@@ -98,49 +98,37 @@ const FormValidation = () => {
           <form onSubmit={handleSubmit}>
             <div className={styles.content}>
               <FormBlock title="Общее">
-                {Object.keys(common).map((item, idx) => {
-                  if (idx === 0) {
-                    return (
-                      <div className={styles.items__common} key={idx}>
-                        <div className={styles.item}>
-                          <Input
-                            value={values[item]}
-                            onChange={handleChange}
-                            label={ru[item]}
-                            id={item}
-                            error={touched[item] && errors[item]}
-                          />
-                        </div>
-                        <div className={styles.item}>
+                {Object.keys(common).map((item, idx) => (
+                  <>
+                    <div className={styles.item} key={idx}>
+                      <Input
+                        value={values[item]}
+                        onChange={handleChange}
+                        label={ru[item]}
+                        id={item}
+                        error={touched[item] && errors[item]}
+                      />
+                    </div>
+                    {idx === 0 && (
+                      <>
+                        <div className={styles.item} key={idx}>
                           <Select
                             label="Специализация"
                             id="spec"
                             selectData={selectData}
                           />
                         </div>
-                        <div className={styles.item}>
+                        <div className={styles.item} key={idx}>
                           <Select
                             label="Документ"
-                            id="spec"
+                            id="doc"
                             selectData={selectData}
                           />
                         </div>
-                      </div>
-                    );
-                  } else {
-                    return (
-                      <div className={styles.item} key={idx}>
-                        <Input
-                          value={values[item]}
-                          onChange={handleChange}
-                          label={ru[item]}
-                          id={item}
-                          error={touched[item] && errors[item]}
-                        />
-                      </div>
-                    );
-                  }
-                })}
+                      </>
+                    )}
+                  </>
+                ))}
               </FormBlock>
               <FormBlock title="Контакты">
                 {Object.keys(phones).map((item, idx) => (
@@ -171,64 +159,36 @@ const FormValidation = () => {
                 ))}
               </FormBlock>
               <FormBlock title="Мое мнение о чекбоксах">
-                <div className={styles.item}>
-                  <Checkbox
-                    isActive={true}
-                    isDisabled={true}
-                    text="Неактивен, выбран"
-                  />
-                </div>
-                <div className={styles.item}>
-                  <Checkbox
-                    isActive={false}
-                    isDisabled={true}
-                    text="Неактивен, не выбран"
-                  />
-                </div>
-                <div className={styles.item}>
-                  <Checkbox
-                    isActive={true}
-                    isDisabled={false}
-                    text="Я люблю чекбоксы"
-                  />
-                </div>
-                <div className={styles.item}>
-                  <Checkbox
-                    isActive={false}
-                    isDisabled={false}
-                    text="Я ненавижу чекбоксы"
-                  />
-                </div>
+                {[
+                  "Неактивен, выбран",
+                  "Неактивен, не выбран",
+                  "Я люблю чекбоксы",
+                  "Я ненавижу чекбоксы",
+                ].map((text, idx) => (
+                  <div className={styles.item} key={idx}>
+                    <Checkbox
+                      isActive={idx % 2 === 0}
+                      isDisabled={idx < 2}
+                      text={text}
+                    />
+                  </div>
+                ))}
               </FormBlock>
               <FormBlock title="Мое мнение о радио-кнопках">
-                <div className={styles.item}>
-                  <Radiobutton
-                    isActive={true}
-                    isDisabled={true}
-                    text="Неактивна, выбрана"
-                  />
-                </div>
-                <div className={styles.item}>
-                  <Radiobutton
-                    isActive={false}
-                    isDisabled={true}
-                    text="Неактивен, не выбран"
-                  />
-                </div>
-                <div className={styles.item}>
-                  <Radiobutton
-                    isActive={true}
-                    isDisabled={false}
-                    text="Я люблю радио-кнопки"
-                  />
-                </div>
-                <div className={styles.item}>
-                  <Radiobutton
-                    isActive={false}
-                    isDisabled={false}
-                    text="Я ненавижу радио-кнопки"
-                  />
-                </div>
+                {[
+                  "Неактивна, выбрана",
+                  "Неактивен, не выбран",
+                  "Я люблю радио-кнопки",
+                  "Я ненавижу радио-кнопки",
+                ].map((text, idx) => (
+                  <div className={styles.item} key={idx}>
+                    <Radiobutton
+                      isActive={idx % 2 === 0}
+                      isDisabled={idx < 2}
+                      text={text}
+                    />
+                  </div>
+                ))}
                 <div className={styles.item}>
                   <Input label="Комментарий" />
                 </div>
@@ -236,12 +196,16 @@ const FormValidation = () => {
             </div>
             <div className={styles.buttons}>
               <div className={styles.buttons__item}>
-                <Button className={styles['btn-small']} type="submit" isDisabled={isSubmitting}>
+                <Button
+                  className={styles["btn-small"]}
+                  type="submit"
+                  isDisabled={isSubmitting}
+                >
                   Сохранить
                 </Button>
               </div>
               <div className={styles.buttons__item}>
-                <Button className={styles['btn-transparent']}>Отмена</Button>
+                <Button className={styles["btn-transparent"]}>Отмена</Button>
               </div>
             </div>
           </form>
