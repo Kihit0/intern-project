@@ -94,13 +94,14 @@ const FormValidation = () => {
           handleChange,
           handleSubmit,
           isSubmitting,
+          resetForm
         }) => (
           <form onSubmit={handleSubmit}>
             <div className={styles.content}>
               <FormBlock title="Общее">
                 {Object.keys(common).map((item, idx) => (
-                  <>
-                    <div className={styles.item} key={idx}>
+                  <div className={styles.item__common} key={idx}>
+                    <div className={styles.item}>
                       <Input
                         value={values[item]}
                         onChange={handleChange}
@@ -111,14 +112,14 @@ const FormValidation = () => {
                     </div>
                     {idx === 0 && (
                       <>
-                        <div className={styles.item} key={idx}>
+                        <div className={styles.item}>
                           <Select
                             label="Специализация"
                             id="spec"
                             selectData={selectData}
                           />
                         </div>
-                        <div className={styles.item} key={idx}>
+                        <div className={styles.item}>
                           <Select
                             label="Документ"
                             id="doc"
@@ -127,12 +128,12 @@ const FormValidation = () => {
                         </div>
                       </>
                     )}
-                  </>
+                  </div>
                 ))}
               </FormBlock>
               <FormBlock title="Контакты">
                 {Object.keys(phones).map((item, idx) => (
-                  <div className={styles.item} key={idx}>
+                  <div className={styles.item__contacts} key={idx}>
                     <Input
                       id={item}
                       value={values[item]}
@@ -152,7 +153,7 @@ const FormValidation = () => {
                       onChange={handleChange}
                       label={ru[item]}
                       type="email"
-                      placeholder="example@gmail.com"
+                      placeholder="mail@amocrm.ru"
                       error={touched[item] && errors[item]}
                     />
                   </div>
@@ -165,7 +166,7 @@ const FormValidation = () => {
                   "Я люблю чекбоксы",
                   "Я ненавижу чекбоксы",
                 ].map((text, idx) => (
-                  <div className={styles.item} key={idx}>
+                  <div className={styles.item__checkbox} key={idx}>
                     <Checkbox
                       isActive={idx % 2 === 0}
                       isDisabled={idx < 2}
@@ -177,11 +178,11 @@ const FormValidation = () => {
               <FormBlock title="Мое мнение о радио-кнопках">
                 {[
                   "Неактивна, выбрана",
-                  "Неактивен, не выбран",
+                  "Неактивна, не выбрана",
                   "Я люблю радио-кнопки",
                   "Я ненавижу радио-кнопки",
                 ].map((text, idx) => (
-                  <div className={styles.item} key={idx}>
+                  <div className={styles.item__radio} key={idx}>
                     <Radiobutton
                       isActive={idx % 2 === 0}
                       isDisabled={idx < 2}
@@ -205,7 +206,12 @@ const FormValidation = () => {
                 </Button>
               </div>
               <div className={styles.buttons__item}>
-                <Button className={styles["btn-transparent"]}>Отмена</Button>
+                <Button
+                  className={styles["btn-transparent"]}
+                  onClick={() => resetForm(initialValues)}
+                >
+                  Отмена
+                </Button>
               </div>
             </div>
           </form>

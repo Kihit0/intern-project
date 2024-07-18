@@ -27,6 +27,7 @@ const customStyles = {
   }),
   indicatorSeparator: () => ({ display: "none" }),
   indicatorsContainer: () => ({ height: "20px", padding: "0 8px", marginTop: "-14px" }),
+  singleValue: (provided) => ({...provided, marginInline: 0}),
   menu: (provided) => ({ ...provided, zIndex: 9999 }),
 };
 

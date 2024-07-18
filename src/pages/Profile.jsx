@@ -43,9 +43,7 @@ const Profile = () => {
             <TitleBlock title={<>Редактировать профиль</>} />
           </div>
           <div className={styles.form}>
-            <div className={styles.inner__form}>
-              <FormValidation />
-            </div>
+            <FormValidation />
           </div>
         </div>
       </div>

@@ -2,8 +2,24 @@
   margin-bottom: 30px;
 }
 
-.items__common {
+.item__common {
   margin-bottom: 10px;
+}
+
+.item__common:last-child {
+  margin-block: 13px 0;
+}
+
+.item__contacts {
+  margin-bottom: 9px;
+}
+
+.item__checkbox {
+  margin-bottom: 12px;
+}
+
+.item__radio {
+  margin-bottom: 12px;
 }
 
 .item {

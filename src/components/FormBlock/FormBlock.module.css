@@ -1,10 +1,13 @@
 .form__block {
-  position: relative;
 
-  padding-block: 15px 27px;
-  padding-inline: 20px;
 
   border-bottom: var(--border-solid-small) var(--color-athens-gray);
+}
+
+.wrapper {
+  width: 60%;
+  
+  padding: 15px 20px 25px;
 }
 
 .title {
