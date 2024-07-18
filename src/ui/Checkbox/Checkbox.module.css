@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.container input[type="checkbox"] {
+  display: none;
+}
+
+.custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
+  background-color: var(--color-white);
+  border: var(--border-solid-small) var(--color-regent-gray);
+  border-radius: 2px;
+}
+
+.disabled .custom {
+  background-color: var(--color-seashell);
+  border-color: var(--color-mercury);
+}
+
+.icon {
+  width: 10px;
+  height: 9px;
+}
+
+.label {
+  margin-left: 8px;
+}

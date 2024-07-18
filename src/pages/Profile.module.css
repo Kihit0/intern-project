@@ -1,0 +1,52 @@
+.wrapper__menu {
+  display: none;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.content {
+  padding-block: 10px;
+}
+
+.form {
+  width: calc(100% + 40px);
+
+  padding: 20px 0;
+  margin-left: -20px;
+
+  background-color: var(--color-white);
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    display: flex;
+
+    padding-top: 25px;
+  }
+
+  .wrapper__menu {
+    display: block;
+  }
+
+  .menu {
+    width: 293px;
+    height: 300px;
+
+    background-color: var(--color-white);
+  }
+
+  .content {
+    width: calc(100% - 293px);
+    margin-left: 25px;
+  }
+
+  .form {
+    margin: 20px 0 70px 0;
+  }
+
+  .inner__form {
+    width: 50%;
+  }
+}

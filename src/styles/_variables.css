@@ -13,10 +13,13 @@
 
   /* Цвета */
   --color-white: #ffffff;
+  --color-seashell: #f1f1f1;
+  --color-mercury: #e8e8e8;
   --color-wild-sand: #f5f5f5;
   --color-athens-gray: #e5e6e9;
   --color-silver-sand: #c6c7c9;
   --color-periwinkle-gray: #c8daea;
+  --color-alto: #d9d9d9;
   --color-regent-gray: #8591a5;
   --color-outer-space: #2e3640;
   --color-firefly: #10242d;
@@ -24,7 +27,8 @@
   --color-black: #000000;
   --color-sail: #a1d5f6;
   --color-cornflower-blue: #4c8bf7;
-  --color-royal-blue: #4D85E6;
+  --color-royal-blue: #4d85e6;
+  --color-flory: #f37575;
 
   /* Радиусы*/
   --border-radius-small: 3px;

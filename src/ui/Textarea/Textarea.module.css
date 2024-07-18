@@ -1,0 +1,10 @@
+.textarea {
+  overflow: auto;
+
+  resize: none;
+  max-height: 100px;
+}
+
+.textarea:focus {
+  outline: none;
+}

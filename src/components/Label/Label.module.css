@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  width: 121px;
+
+  line-height: 19.41px;
+  color: var(--color-regent-gray);
+}
+
+.error__message {
+  margin-left: 121px;
+}
+
+.error {
+  color: var(--color-flory);
+  text-transform: lowercase;
+}

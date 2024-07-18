@@ -1,0 +1,12 @@
+.form__block {
+  position: relative;
+
+  padding-block: 15px 27px;
+  padding-inline: 20px;
+
+  border-bottom: var(--border-solid-small) var(--color-athens-gray);
+}
+
+.title {
+  padding-bottom: 13px;
+}

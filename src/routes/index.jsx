@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Main from "../pages/Main";
 import NewsDetails from "../pages/NewsDetails";
+import Profile from "../pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
     id: "promotions",
     path: "/promotions/:id",
   },
+  {
+    id: "profile",
+    path: "/profile",
+    element: <Profile />
+  }
 ]);
 
 export default router;

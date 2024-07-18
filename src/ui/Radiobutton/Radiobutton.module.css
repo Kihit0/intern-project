@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.custom {
+  position: relative;
+
+  width: 16px;
+  height: 16px;
+
+  background-color: var(--color-white);
+  border: var(--border-solid-small) var(--color-regent-gray);
+  border-radius: 50%;
+}
+
+.custom::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 6px;
+  height: 6px;
+
+  content: "";
+  background-color: transparent;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.active .custom::after {
+  display: block;
+
+  background-color: var(--color-cornflower-blue);
+}
+
+.disabled .custom {
+  background-color: var(--color-seashell);
+  border-color: var(--color-mercury);
+}
+
+.active.disabled .custom::after {
+  display: block;
+
+  background-color: var(--color-alto);
+}
+
+.label {
+  margin-left: 8px;
+}

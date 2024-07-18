@@ -1,0 +1,32 @@
+.input {
+  width: 64%;
+
+  padding: 3px 0 0 1px;
+
+  border: none;
+}
+
+.input:focus {
+  padding-bottom: 5px;
+  
+  outline: none;
+
+  border-bottom: var(--border-solid-small) var(--color-cornflower-blue);
+}
+
+.input::placeholder {
+  color: var(--color-regent-gray);
+}
+
+.error {
+  color: var(--color-flory);
+}
+
+.error:focus {
+  border-bottom-color: var(--color-flory);
+}
+
+.error::placeholder {
+  color: var(--color-flory);
+}
+
