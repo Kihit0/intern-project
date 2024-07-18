@@ -1,25 +1,34 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styles from "./Textarea.module.css";
+import Label from "../../components/Label/Label";
 
-const Textarea = () => {
+const Textarea = (props) => {
+  const { id, label, error, onChange, value } = props;
+
   const textareaRef = useRef(null);
 
-  useEffect(() => {
+  const handleInput = () => {
     const textarea = textareaRef.current;
-    const handleInput = () => {
-      textarea.style.height = "20px";
-      textarea.style.height = Math.min(textarea.height, 100) + "px";
-    };
+    textarea.style.height = "30px";
+    textarea.style.height = `${Math.max(textarea.scrollHeight, 100)}px`;
+    onChange(textarea.value);
+  };
 
-    textarea.addEventListener("input", handleInput);
-
-    return () => {
-      textarea.style.height = "20px";
-      textarea.removeEventListener("input", handleInput);
-    };
-  }, []);
-
-  return <textarea ref={textareaRef} className={styles.textarea} />;
+  return (
+    <div>
+      <Label id={id} label={label} error={error}>
+        <textarea
+          id={id}
+          ref={textareaRef}
+          value={value}
+          onChange={onChange}
+          className={styles.textarea}
+          onInput={handleInput}
+          placeholder="..."
+        />
+      </Label>
+    </div>
+  );
 };
 
 export default Textarea;

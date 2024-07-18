@@ -4,6 +4,7 @@ import { Formik } from "formik";
 
 import FormBlock from "../FormBlock/FormBlock";
 import Input from "../../ui/Input/Input";
+import Textarea from "../../ui/Textarea/Textarea";
 import Select from "../../ui/Select/Select";
 import Button from "../Button/Button";
 import Checkbox from "../../ui/Checkbox/Checkbox";
@@ -32,7 +33,7 @@ const phones = {
 const viewData = {
   name: {
     label: "ФИО",
-    placeholder: "Иванов Иван Иванович"
+    placeholder: "Иванов Иван Иванович",
   },
   city: {
     label: "Город",
@@ -126,15 +127,25 @@ const FormValidation = () => {
                 {Object.keys(common).map((item, idx) => (
                   <div className={styles.item__common} key={idx}>
                     <div className={styles.item}>
-                      <Input
-                        value={values[item]}
-                        onChange={handleChange}
-                        label={viewData[item].label}
-                        id={item}
-                        isDisabled={viewData[item]?.isDisabled}
-                        placeholder={viewData[item]?.placeholder}
-                        error={touched[item] && errors[item]}
-                      />
+                      {idx < 2 ? (
+                        <Input
+                          value={values[item]}
+                          onChange={handleChange}
+                          label={viewData[item].label}
+                          id={item}
+                          isDisabled={viewData[item]?.isDisabled}
+                          placeholder={viewData[item]?.placeholder}
+                          error={touched[item] && errors[item]}
+                        />
+                      ) : (
+                        <Textarea
+                          value={values[item]}
+                          onChange={handleChange}
+                          label={viewData[item].label}
+                          id={item}
+                          error={touched[item] && errors[item]}
+                        />
+                      )}
                     </div>
                     {idx === 0 && (
                       <>
@@ -202,7 +213,7 @@ const FormValidation = () => {
                   </div>
                 ))}
                 <div className={styles.item}>
-                  <Input label="Комментарий" />
+                  <Textarea />
                 </div>
               </FormBlock>
             </div>

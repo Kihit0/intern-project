@@ -9,7 +9,7 @@ import LayoutMenu from "../../components/LayoutMenu/LayoutMenu";
 
 import { getOneItem } from "../../api/endpoint";
 
-import { NAV_ITEMS } from "../../constans/constants.data";
+import { NAV_ITEMS } from "../../constants/constants.data";
 
 const DEFAULT_IMAGE = "src/assets/images/default-card-header.jpg";
 

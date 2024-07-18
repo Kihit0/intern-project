@@ -1,6 +1,7 @@
 .textarea {
   overflow: auto;
 
+  height: 20px;
   max-height: 100px;
 
   resize: none;
@@ -9,4 +10,6 @@
 
 .textarea:focus {
   outline: none;
+
+  border-bottom: var(--border-solid-small) var(--color-cornflower-blue);
 }

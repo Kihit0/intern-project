@@ -5,7 +5,7 @@ import ModalBurger from "../../components/ModalBurger/ModalBurger";
 import LayoutMenu from "../../components/LayoutMenu/LayoutMenu";
 import TitleBlock from "../../components/TitleBlock/TitleBlock";
 import FormValidation from "../../components/FormValidation/FormValidation";
-import { NAV_ITEMS } from "../../constans/constants.data";
+import { NAV_ITEMS } from "../../constants/constants.data";
 
 const Profile = () => {
   return (
