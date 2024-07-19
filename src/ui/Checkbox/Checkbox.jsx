@@ -13,7 +13,7 @@ const Checkbox = (props) => {
     <div>
       <label className={cx(styles.container, { disabled: isDisabled })}>
         <input className={styles.checkbox} type="checkbox" />
-        <span className={styles.custom} onClick={() => !isDisabled && onClick}>
+        <span className={styles.custom} onClick={() => !isDisabled && onClick()}>
           {isActive && (
             <CheckedIcon color={isDisabled ? "var(--color-alto)" : undefined} />
           )}
