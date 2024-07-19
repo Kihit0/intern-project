@@ -9,9 +9,14 @@ const Textarea = (props) => {
 
   const handleInput = () => {
     const textarea = textareaRef.current;
-    textarea.style.height = "30px";
-    textarea.style.height = `${Math.max(textarea.scrollHeight, 100)}px`;
-    onChange(textarea.value);
+    textarea.style.minHeight = "30px";
+    textarea.style.minHeight = `100px`;
+  };
+
+  const handleLeave = () => {
+    const textarea = textareaRef.current;
+    textarea.style.minHeight = "auto";
+    textarea.style.minHeight = `${Math.min(textarea.scrollHeight, 100)}px`;
   };
 
   return (
@@ -25,6 +30,7 @@ const Textarea = (props) => {
           className={styles.textarea}
           onInput={handleInput}
           placeholder="..."
+          onBlur={handleLeave}
         />
       </Label>
     </div>
